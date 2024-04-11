@@ -1,0 +1,43 @@
+---
+- name: Install Python 2
+  sudo: yes
+  remote_user: root
+  gather_facts: no
+  raw: sudo apt-get -y install python
+
+- name: Create group mapr
+  become: true
+  group:
+    name: mapr
+    gid: 5000
+    state: present
+
+- name: Create user mapr
+  become: true
+  user:
+    name: mapr
+    uid: 5000
+    group: mapr
+    shell: /bin/bash
+    createhome: yes
+
+- name: Set password for user mapr
+  become: true
+  user:
+    name: mapr
+    password: "{{ 'mapr_password' | password_hash('sha512') }}"
+    update_password: always
+
+- name: Add user mapr to sudo group
+  become: true
+  user:
+    name: mapr
+    groups: sudo
+    append: yes
+
+- name: Add user mapr to shadow group
+  become: true
+  user:
+    name: mapr
+    groups: shadow
+    append: yes

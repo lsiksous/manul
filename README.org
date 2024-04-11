@@ -1,0 +1,23 @@
+#+TITLE: Install 3 nodes mapr cluter
+#+AUTHOR: Laurent Siksous
+
+* Introduction
+
+* Installation
+  ** Requirements
+  ** Setup
+
+     #+BEGIN_SRC shell
+     git clone https://github.com/lsiksous/mapstr.io.git
+     cd yourprojectname
+     #+END_SRC
+
+* Usage
+
+* Configuration
+
+* Contribution
+
+* License
+
+* Acknowledgments

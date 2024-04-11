@@ -1,0 +1,5 @@
+---
+- name: Create mapr user on all nodes
+  hosts: nodes
+  roles:
+    - create_mapr_user

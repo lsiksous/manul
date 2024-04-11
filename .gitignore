@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ansible retry files
+*.retry
+
+# Ansible Vault files
+vault.yml
+*.vault
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temporary files
+*.tmp
+
+# Python virtual environments
+venv/
+*.venv
+env/
+
+# Role dependencies managed by ansible-galaxy
+roles/external/
+
+# Files created by ansible-test
+/tests/output/
