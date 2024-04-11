@@ -3,3 +3,4 @@
   hosts: nodes
   roles:
     - create_mapr_user
+    - generate_ssh_key

@@ -1,0 +1,22 @@
+---
+- name: Generate SSH key pair
+  become: yes
+  become_user: "{{ mapr_user }}"
+  shell: ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+  args:
+    creates: ~/.ssh/id_rsa
+
+- name: Fetch SSH public key
+  become: yes
+  become_user: "{{ mapr_user }}"
+  shell: cat ~/.ssh/id_rsa.pub
+  register: ssh_public_key
+  changed_when: false
+
+- name: Add SSH public key to authorized_keys
+  become: yes
+  become_user: "{{ mapr_user }}"
+  lineinfile:
+    path: /home/{{ mapr_user }}/.ssh/authorized_keys
+    line: "{{ ssh_public_key.stdout }}"
+    create: yes
