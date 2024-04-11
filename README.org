@@ -4,9 +4,9 @@
 * Introduction
 
 * Installation
-  ** Requirements
-  
-  ** Setup
+** Requirements
+
+** Setup
 
      #+BEGIN_SRC shell
      git clone https://github.com/lsiksous/mapstr.io.git
