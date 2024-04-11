@@ -1,0 +1,7 @@
+---
+- name: Download MapR setup script
+  become: true
+  shell:
+    wget --user={{ hpe_user }} --password={{ hpe_token }} \
+    https://package.ezmeral.hpe.com/releases/installer/mapr-setup.sh \
+    -P /tmp && chmod +x /tmp/mapr-setup.sh

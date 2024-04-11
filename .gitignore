@@ -9,6 +9,7 @@ __pycache__/
 # Ansible Vault files
 vault.yml
 *.vault
+vault
 
 # System-specific files
 .DS_Store
