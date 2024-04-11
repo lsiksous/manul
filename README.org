@@ -3,6 +3,8 @@
 
 * Introduction
 
+[[file:media/topo.png]]
+
 * Installation
 ** Requirements
 
@@ -10,7 +12,7 @@
 
      #+BEGIN_SRC shell
      git clone https://github.com/lsiksous/mapstr.io.git
-     cd yourprojectname
+     cd mapstr.io
      #+END_SRC
 
 * Usage
