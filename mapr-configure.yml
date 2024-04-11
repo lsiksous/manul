@@ -1,6 +1,8 @@
 ---
-- name: Create mapr user on all nodes
+- name: Cofigure all nodes
   hosts: nodes
+  become: true
   roles:
     - create_mapr_user
     - generate_ssh_key
+    - copy_hosts
