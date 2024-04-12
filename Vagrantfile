@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
     echo -e "vagrant\nvagrant" | (passwd vagrant)
     echo -e "root\nroot" | (passwd root)
     sudo apt update -y
-    sudo apt install wget ansible sshpass
+    sudo apt install wget ansible sshpass git
+    git clone https://github.com/lsiksous/mapstr.io.git
   SHELL
 
     (1..NUM_NODES).each do |i|
