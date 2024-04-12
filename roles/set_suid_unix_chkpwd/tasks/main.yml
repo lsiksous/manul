@@ -1,0 +1,4 @@
+---
+- name: Set setuid permission on unix_chkpwd
+  command: chmod u+s /sbin/unix_chkpwd
+  become: true

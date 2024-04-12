@@ -1,15 +1,23 @@
 ---
 - name: Cofigure all nodes
-  hosts: nodes
+  hosts: all
   become: true
   roles:
     - create_mapr_user
     - generate_ssh_key
     - ssh_copy_id
+    - add_sudoer_user
+
+- name: Populate hosts file
+  hosts: nodes
+  become: true
+  roles:
     - copy_hosts
-    
+
+
 - name: Download MapR setup script
   hosts: edge
   become: true
   roles:
     - download_mapr_setup
+    - set_suid_unix_chkpwd

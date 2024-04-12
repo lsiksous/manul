@@ -19,19 +19,11 @@
   become: true
   user:
     name: mapr
-    password: "{{ 'mapr_password' | password_hash('sha512') }}"
+    password: "{{ mapr_password | password_hash('sha512') }}"
     update_password: always
 
-- name: Add user mapr to sudo group
+- name: Add user mapr to sudo groups
   become: true
   user:
     name: mapr
-    groups: sudo
-    append: yes
-
-- name: Add user mapr to shadow group
-  become: true
-  user:
-    name: mapr
-    groups: shadow
-    append: yes
+    groups: admin,sudo,shadow

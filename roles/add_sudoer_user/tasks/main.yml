@@ -1,0 +1,10 @@
+- name: Add user to /etc/sudoers with NOPASSWD
+  blockinfile:
+    path: /etc/sudoers
+    marker: "# Ansible managed block"
+    block: |
+      {{ sudoer_user }} ALL=(ALL) NOPASSWD:ALL
+  become: true
+  vars:
+    sudoer_user: "{{ mapr_user }}"
+  when: mapr_user != 'root'
