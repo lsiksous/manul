@@ -34,3 +34,27 @@ roles/external/
 
 # Files created by ansible-test
 /tests/output/
+
+# Ignore Vagrant environment files
+/.vagrant/
+
+# Ignore VirtualBox files
+*.vbox
+*.vbox-prev
+*.vbox-prev-prev
+*.vdi
+*.vdi.*
+*.vmdk
+*.vagrant
+
+# Ignore logs
+*.log
+
+# Ignore SSH private key
+.vagrant/machines/*/virtualbox/private_key
+
+# Ignore synced folder contents
+.vagrant/synced_folders/
+
+# Ignore temporary files
+.vagrant/box-update-tmp-*
