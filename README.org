@@ -1,6 +1,11 @@
-#+TITLE: Hadoop Labs Toolbox
+#+TITLE: Empowering Hadoop Learning with Hands-on Environments
 #+AUTHOR: Laurent Siksous
 
+
+#+BEGIN_QUOTE
+"Embrace curiosity, explore relentlessly, and let your instincts guide you like
+the agile Manul through the rugged landscapes of knowledge."
+#+END_QUOTE
 
 #+attr_html: :width 100px
 #+attr_latex: :width 100px
@@ -17,6 +22,10 @@
    students to explore different deployment and configuration management
    techniques.
 
+
+[[file:media/topo.png]]
+
+   
 ** Toolbox Features:
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
      Hadoop distributions: OSS, Cloudera, and Mapr. This variety allows students
@@ -65,9 +74,6 @@
    - *Enhanced Automation:* Continuously improving our automation capabilities, we
      aim to streamline the deployment and management processes further, reducing
      setup time and effort for students and instructors alike.
-
-
-[[file:media/topo.png]]
 
 * Installation
 ** Requirements
