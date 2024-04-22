@@ -1,11 +1,70 @@
 #+TITLE: Hadoop Labs Toolbox
 #+AUTHOR: Laurent Siksous
 
+
 #+attr_html: :width 100px
 #+attr_latex: :width 100px
 [[file:media/logo.png]]
 
 * Introduction
+
+** Project Overview:
+   The aim of our project is to facilitate the creation of lab environments for
+   a learning company that specializes in teaching Hadoop courses. These courses
+   are designed to provide students with hands-on experience in working with
+   Hadoop distributions, including OSS, Cloudera, and Mapr. Our toolbox offers
+   easy deployment of these Hadoop distributions using various methods, allowing
+   students to explore different deployment and configuration management
+   techniques.
+
+** Toolbox Features:
+   - **Hadoop Distributions:** Our toolbox supports the deployment of three main
+     Hadoop distributions: OSS, Cloudera, and Mapr. This variety allows students
+     to gain exposure to different Hadoop platforms and understand their unique
+     features and capabilities.
+   - **Deployment Methods:** We provide multiple deployment methods to cater to
+     different learning preferences and scenarios:
+     - *Docker:* Students can deploy Hadoop environments using Docker containers,
+       offering a lightweight and portable solution.
+     - *Vagrant:* Virtual environments can be created using Vagrant, allowing
+       students to set up Hadoop clusters on their local machines with ease.
+     - *Terraform:* Infrastructure as Code (IaC) enthusiasts can utilize Terraform
+       to provision Hadoop clusters on cloud platforms or virtualization
+       providers.
+     - *Ansible:* Especially focused on Ansible, our toolbox emphasizes
+       configuration management techniques, enabling students to automate the
+       setup and management of Hadoop environments.
+   - **Integrated Curriculum:** The courses offered by the learning company
+     include comprehensive coverage of Hadoop concepts and hands-on labs using
+     our toolbox. Students not only learn about Hadoop but also gain practical
+     experience in deploying and managing Hadoop clusters using
+     industry-standard tools like Docker, Vagrant, Terraform, and Ansible.
+
+** Benefits:
+   - **Hands-on Learning:** By providing easy access to deployable Hadoop
+     environments, our project enhances the hands-on learning experience for
+     students, allowing them to apply theoretical concepts in real-world
+     scenarios.
+   - **Exposure to Multiple Platforms:** Students get exposure to a variety of
+     Hadoop distributions, enabling them to understand the strengths and
+     weaknesses of each platform and make informed decisions in their future
+     career paths.
+   - **Comprehensive Curriculum:** Our integrated curriculum ensures that students
+     receive a holistic learning experience, covering both theoretical concepts
+     and practical implementation using state-of-the-art tools.
+   - **Git Collaboration:** We encourage students to learn Git workflows,
+     including working in teams with branches and pull requests. Understanding
+     Git collaboration is essential for effective teamwork and version control
+     in software development projects. Learning these skills will prepare
+     students for collaborative work environments and enhance their
+     employability in the industry.
+
+
+** Future Enhancements:
+   - *Enhanced Automation:* Continuously improving our automation capabilities, we
+     aim to streamline the deployment and management processes further, reducing
+     setup time and effort for students and instructors alike.
+
 
 [[file:media/topo.png]]
 
