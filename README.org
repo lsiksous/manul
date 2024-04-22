@@ -30,7 +30,7 @@ underway to protect its habitat and populations.
 
 * Introduction
 
-** Project Overview:
+** Project Overview
    The aim of our project is to facilitate the creation of lab environments for
    a learning company that specializes in teaching Big Data courses. These courses
    are designed to provide students with hands-on experience in working with
@@ -43,7 +43,7 @@ underway to protect its habitat and populations.
 [[file:media/topo.png]]
 
    
-** Toolbox Features:
+** Toolbox Features
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
      Hadoop distributions: OSS, Cloudera, and MapR. This variety allows students
      to gain exposure to different Hadoop platforms and understand their unique
@@ -66,7 +66,7 @@ underway to protect its habitat and populations.
      experience in deploying and managing Hadoop clusters using
      industry-standard tools like Docker, Vagrant, Terraform, and Ansible.
 
-** Benefits:
+** Benefits
    - *Hands-on Learning:* By providing easy access to deployable Hadoop
      environments, our project enhances the hands-on learning experience for
      students, allowing them to apply theoretical concepts in real-world
@@ -87,7 +87,7 @@ underway to protect its habitat and populations.
      industry.
 
 
-** Future Enhancements:
+** Future Enhancements
    - *Enhanced Automation:* Continuously improving our automation capabilities, we
      aim to streamline the deployment and management processes further, reducing
      setup time and effort for students and instructors alike.
@@ -95,7 +95,7 @@ underway to protect its habitat and populations.
 * Installation
 ** Requirements
 
-*** Development Environment:
+*** Development Environment
    - Operating System: Windows 10
      - System Type: 64-bit operating system, x64-based processor
    - Processor: Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz (2 processors)
@@ -103,15 +103,15 @@ underway to protect its habitat and populations.
    - Hard disk: 512 Gb
 
 
-*** Virtualization Setup:
+*** Virtualization Setup
    - VirtualBox Version: 7.0
      - RAM Allocation: 60 GB
      - Processor Allocation: 48 processors
 
-*** Software Dependencies:
+*** Software Dependencies
    - Vagrant: Version 2.4.1 for Windows
 
-*** Virtual Machine Requirements:
+*** Virtual Machine Requirements
    - Operating System: Ubuntu 22.04 (VirtualBox Appliance)
      - RAM: At least 24 GB
      - CPUs: At least 12
@@ -122,7 +122,7 @@ underway to protect its habitat and populations.
      [[https://www.cloudera.com/downloads/cdp-private-cloud-trial/cdp-private-cloud-base-trial.html]]
    - HPE Ezmeral Data Fabric free trial: [[https://docs.ezmeral.hpe.com/datafabric/76/licensing/obtaining_a_license.html]]
 
-*** Important Note:
+*** Important Note
    - *Windows Subsystem for Linux 2 (WSL2) should not be used* because of
      compatibility issues with virtualbox and Windows 10.
    - For this reason, it is recommended to disable Hyper-V:
