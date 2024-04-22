@@ -204,3 +204,10 @@ terraform apply main.destroy.tfplan
 This project is licensed under the [[file:LICENSE][GNU General Public License v3.0]].
 
 * Acknowledgments
+
+I would like to extend my gratitude to the following individuals:
+
+- [Dr. Heni Bouhamed](https://www.linkedin.com/in/dr-heni-bouhamed-6056669a/):
+  A great inspiration in my hadoop learning journey.
+- [Salem Ben afia](https://www.linkedin.com/in/ben-afia-salem-08216b24/): Great
+  Sense of humor.
