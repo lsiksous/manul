@@ -18,11 +18,11 @@
    techniques.
 
 ** Toolbox Features:
-   - **Hadoop Distributions:** Our toolbox supports the deployment of three main
+   - *Hadoop Distributions:* Our toolbox supports the deployment of three main
      Hadoop distributions: OSS, Cloudera, and Mapr. This variety allows students
      to gain exposure to different Hadoop platforms and understand their unique
      features and capabilities.
-   - **Deployment Methods:** We provide multiple deployment methods to cater to
+   - *Deployment Methods:* We provide multiple deployment methods to cater to
      different learning preferences and scenarios:
      - *Docker:* Students can deploy Hadoop environments using Docker containers,
        offering a lightweight and portable solution.
@@ -34,30 +34,31 @@
      - *Ansible:* Especially focused on Ansible, our toolbox emphasizes
        configuration management techniques, enabling students to automate the
        setup and management of Hadoop environments.
-   - **Integrated Curriculum:** The courses offered by the learning company
+   - *Integrated Curriculum:* The courses offered by the learning company
      include comprehensive coverage of Hadoop concepts and hands-on labs using
      our toolbox. Students not only learn about Hadoop but also gain practical
      experience in deploying and managing Hadoop clusters using
      industry-standard tools like Docker, Vagrant, Terraform, and Ansible.
 
 ** Benefits:
-   - **Hands-on Learning:** By providing easy access to deployable Hadoop
+   - *Hands-on Learning:* By providing easy access to deployable Hadoop
      environments, our project enhances the hands-on learning experience for
      students, allowing them to apply theoretical concepts in real-world
      scenarios.
-   - **Exposure to Multiple Platforms:** Students get exposure to a variety of
+   - *Exposure to Multiple Platforms:* Students get exposure to a variety of
      Hadoop distributions, enabling them to understand the strengths and
      weaknesses of each platform and make informed decisions in their future
      career paths.
-   - **Comprehensive Curriculum:** Our integrated curriculum ensures that students
+   - *Comprehensive Curriculum:* Our integrated curriculum ensures that students
      receive a holistic learning experience, covering both theoretical concepts
      and practical implementation using state-of-the-art tools.
-   - **Git Collaboration:** We encourage students to learn Git workflows,
-     including working in teams with branches and pull requests. Understanding
-     Git collaboration is essential for effective teamwork and version control
-     in software development projects. Learning these skills will prepare
-     students for collaborative work environments and enhance their
-     employability in the industry.
+   - *Git Collaboration:* We encourage students to contribute with git to this
+     project so that they can learn Git workflows, including working in teams
+     with branches and pull requests. Understanding Git collaboration is
+     essential for effective teamwork and version control in software
+     development projects. Learning these skills will prepare students for
+     collaborative work environments and enhance their employability in the
+     industry.
 
 
 ** Future Enhancements:
