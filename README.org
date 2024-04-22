@@ -1,4 +1,4 @@
-#+TITLE: Manul[fn:1]: Empowering Hadoop Learning with Hands-on Environments
+#+TITLE: Manul: Empowering Hadoop Learning with Hands-on Environments
 #+AUTHOR: Laurent Siksous
 
 
@@ -9,6 +9,24 @@ the agile Manul through the rugged landscapes of knowledge."
 
 #+ATTR_ORG: :width 100
 [[file:media/logo.png]]
+
+#+BEGIN_FOOTNOTE
+The manul is a species of wild cat known as the Pallas's cat (Otocolobus
+manul). The Pallas's cat is native to the grasslands and montane steppes of
+Central Asia, including regions of Mongolia, China, Russia, and parts of Central
+Asia. It's known for its distinctive appearance, with a stocky build, long fur,
+flat face, and expressive eyes.
+
+The Pallas's cat is well-adapted to its harsh, cold environment, with its dense
+fur providing insulation against the cold and its low metabolism enabling it to
+conserve energy. It's primarily a solitary and nocturnal hunter, preying on
+small mammals, birds, and insects.
+
+The Pallas's cat is also known by other names, including the manul, the steppe
+cat, and the rock wildcat. It's considered a near-threatened species due to
+habitat loss, degradation, and hunting pressures. Conservation efforts are
+underway to protect its habitat and populations. 
+#+END_FOOTNOTE
 
 * Introduction
 
@@ -161,20 +179,3 @@ terraform apply main.destroy.tfplan
 * License
 
 * Acknowledgments
-
-
-[fn:1] The manul is a species of wild cat known as the Pallas's cat (Otocolobus
-manul). The Pallas's cat is native to the grasslands and montane steppes of
-Central Asia, including regions of Mongolia, China, Russia, and parts of Central
-Asia. It's known for its distinctive appearance, with a stocky build, long fur,
-flat face, and expressive eyes.
-
-The Pallas's cat is well-adapted to its harsh, cold environment, with its dense
-fur providing insulation against the cold and its low metabolism enabling it to
-conserve energy. It's primarily a solitary and nocturnal hunter, preying on
-small mammals, birds, and insects.
-
-The Pallas's cat is also known by other names, including the manul, the steppe
-cat, and the rock wildcat. It's considered a near-threatened species due to
-habitat loss, degradation, and hunting pressures. Conservation efforts are
-underway to protect its habitat and populations. 
