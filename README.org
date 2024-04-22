@@ -207,5 +207,6 @@ This project is licensed under the [[file:LICENSE][GNU General Public License v3
 
 I would like to extend my gratitude to the following individuals:
 
-- [[https://www.linkedin.com/in/dr-heni-bouhamed-6056669a/][Dr. Heni Bouhamed]]: A great inspiration in my Hadoop learning journey.
-- [[https://www.linkedin.com/in/ben-afia-salem-08216b24/][Salem Ben Afia]]: For his great sense of humour.
+- [[https://www.linkedin.com/in/dr-heni-bouhamed-6056669a/][Dr. Heni Bouhamed]]: A great mind and inspiration in my Hadoop learning journey. I hope
+  to include his own hadoop distribution in this project very soon : https://zettaspark.io
+- [[https://www.linkedin.com/in/ben-afia-salem-08216b24/][Salem Ben Afia]]: For his great sense of humour, talent and vision.
