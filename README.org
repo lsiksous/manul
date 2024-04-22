@@ -1,6 +1,8 @@
 #+TITLE: Hadoop Labs Toolbox
 #+AUTHOR: Laurent Siksous
 
+#+attr_html: :width 100px
+#+attr_latex: :width 100px
 [[file:media/logo.png]]
 
 * Introduction
@@ -16,6 +18,47 @@
      git clone https://github.com/lsiksous/mapstr.io.git
      cd mapstr.io
      #+END_SRC
+
+** Terraform
+
+You can choose to deploy your cluster to the cloud (Azure)
+
+*** Initialisation
+
+#+begin_src shell
+cd terraform && terraform init && terraform plan -out main.tfplan
+#+end_src
+
+*** Run terraform apply to apply the execution plan
+
+  #+begin_src shell
+terraform apply main.tfplan
+  #+end_src
+
+*** Verify the results
+
+  #+begin_src shell
+# Get the Azure resource group name
+resource_group_name=$(terraform output -raw resource_group_name)
+
+# Get the virtual network name
+virtual_network_name=$(terraform output -raw virtual_network_name)
+
+# Use az network vnet show to display the details of the newly created virtual network
+az network vnet show \
+    --resource-group $resource_group_name \
+    --name $virtual_network_name
+  #+end_src
+
+*** Clean up resources
+
+#+begin_src shell
+# Run terraform plan and specify the destroy flag
+terraform plan -destroy -out main.destroy.tfplan
+
+# Run terraform apply to apply the execution plan
+terraform apply main.destroy.tfplan
+#+end_src
 
 * Usage
 
