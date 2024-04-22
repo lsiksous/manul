@@ -1,5 +1,5 @@
 ---
-- name: Cofigure all nodes
+- name: Configure all nodes
   hosts: all
   become: true
   roles:

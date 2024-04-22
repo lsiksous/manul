@@ -12,11 +12,34 @@
 * Installation
 ** Requirements
 
+*** Development Environment:
+   - Operating System: Windows 10
+     - System Type: 64-bit operating system, x64-based processor
+   - Processor: Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz (2 processors)
+   - Installed RAM: 60.0 GB
+
+*** Virtualization Setup:
+   - VirtualBox Version: 7.0
+     - RAM Allocation: 60 GB
+     - Processor Allocation: 48 processors
+
+*** Software Dependencies:
+   - Vagrant: Version 2.4.1 for Windows
+
+*** Virtual Machine Requirements:
+   - Operating System: Ubuntu 22.04 (VirtualBox Appliance)
+     - RAM: At least 24 GB
+     - CPUs: At least 12
+     - Software: Docker installed (Version 20.10.21)
+
+*** Important Note:
+   - No WSL2: Windows Subsystem for Linux 2 (WSL2) should not be used.
+
 ** Setup
 
      #+BEGIN_SRC shell
-     git clone https://github.com/lsiksous/mapstr.io.git
-     cd mapstr.io
+     git clone https://github.com/lsiksous/manul.io.git
+     cd manul.io
      #+END_SRC
 
 ** Terraform
