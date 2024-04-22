@@ -34,7 +34,7 @@ underway to protect its habitat and populations.
    The aim of our project is to facilitate the creation of lab environments for
    a learning company that specializes in teaching Hadoop courses. These courses
    are designed to provide students with hands-on experience in working with
-   Hadoop distributions, including OSS, Cloudera, and Mapr. Our toolbox offers
+   Hadoop distributions, including OSS, Cloudera, and MapR. Our toolbox offers
    easy deployment of these Hadoop distributions using various methods, allowing
    students to explore different deployment and configuration management
    techniques.
@@ -45,7 +45,7 @@ underway to protect its habitat and populations.
    
 ** Toolbox Features:
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
-     Hadoop distributions: OSS, Cloudera, and Mapr. This variety allows students
+     Hadoop distributions: OSS, Cloudera, and MapR. This variety allows students
      to gain exposure to different Hadoop platforms and understand their unique
      features and capabilities.
    - *Deployment Methods:* We provide multiple deployment methods to cater to
