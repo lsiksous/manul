@@ -114,12 +114,24 @@ underway to protect its habitat and populations.
      - RAM: At least 24 GB
      - CPUs: At least 12
      - Software: Docker installed (Version 20.10.21)
+*** Licensing
+   - CDP Private Cloud Base free trial:
+     [[https://www.cloudera.com/downloads/cdp-private-cloud-trial/cdp-private-cloud-base-trial.html]]
+   - HPE Ezmeral Data Fabric free trial: [[https://docs.ezmeral.hpe.com/datafabric/76/licensing/obtaining_a_license.html]]
 
 *** Important Note:
-   - No WSL2: Windows Subsystem for Linux 2 (WSL2) should not be used.
+   - No WSL2: Windows Subsystem for Linux 2 (WSL2) should not be used for
+     compatibility issues with virtualbox and Windows 10.
+   - Disable Hyper-V:
+
+     #+begin_src shell
+bcdedit /set hypervisorlaunchtype off
+     #+end_src
 
 ** Setup
 
+- Clone this repository on your workstation:
+  
      #+BEGIN_SRC shell
      git clone https://github.com/lsiksous/manul.git
      cd manul
