@@ -10,7 +10,7 @@ the agile Manul through the rugged landscapes of knowledge."
 #+ATTR_ORG: :width 100
 [[file:media/logo.png]]
 
-#+BEGIN_FOOTNOTE
+#+BEGIN_QUOTE
 The manul is a species of wild cat known as the Pallas's cat (Otocolobus
 manul). The Pallas's cat is native to the grasslands and montane steppes of
 Central Asia, including regions of Mongolia, China, Russia, and parts of Central
@@ -26,7 +26,7 @@ The Pallas's cat is also known by other names, including the manul, the steppe
 cat, and the rock wildcat. It's considered a near-threatened species due to
 habitat loss, degradation, and hunting pressures. Conservation efforts are
 underway to protect its habitat and populations. 
-#+END_FOOTNOTE
+#+END_QUOTE
 
 * Introduction
 
