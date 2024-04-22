@@ -1,4 +1,4 @@
-#+TITLE: Empowering Hadoop Learning with Hands-on Environments
+#+TITLE: Manul: Empowering Hadoop Learning with Hands-on Environments
 #+AUTHOR: Laurent Siksous
 
 
@@ -7,8 +7,7 @@
 the agile Manul through the rugged landscapes of knowledge."
 #+END_QUOTE
 
-#+attr_html: :width 100px
-#+attr_latex: :width 100px
+#+ATTR_ORG: :width 100
 [[file:media/logo.png]]
 
 * Introduction
@@ -104,27 +103,31 @@ the agile Manul through the rugged landscapes of knowledge."
 ** Setup
 
      #+BEGIN_SRC shell
-     git clone https://github.com/lsiksous/manul.io.git
-     cd manul.io
+     git clone https://github.com/lsiksous/manul.git
+     cd manul
      #+END_SRC
 
-** Terraform
+*** Vagrant
+
+*** Docker
+
+*** Terraform
 
 You can choose to deploy your cluster to the cloud (Azure)
 
-*** Initialisation
+**** Initialisation
 
 #+begin_src shell
 cd terraform && terraform init && terraform plan -out main.tfplan
 #+end_src
 
-*** Run terraform apply to apply the execution plan
+**** Run terraform apply to apply the execution plan
 
   #+begin_src shell
 terraform apply main.tfplan
   #+end_src
 
-*** Verify the results
+**** Verify the results
 
   #+begin_src shell
 # Get the Azure resource group name
@@ -139,7 +142,7 @@ az network vnet show \
     --name $virtual_network_name
   #+end_src
 
-*** Clean up resources
+**** Clean up resources
 
 #+begin_src shell
 # Run terraform plan and specify the destroy flag
