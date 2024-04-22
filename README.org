@@ -1,5 +1,7 @@
-#+TITLE: Install 3 nodes mapr cluster
+#+TITLE: Hadoop Labs Toolbox
 #+AUTHOR: Laurent Siksous
+
+[[file:media/logo.png]]
 
 * Introduction
 
