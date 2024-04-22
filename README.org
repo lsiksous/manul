@@ -100,6 +100,8 @@ underway to protect its habitat and populations.
      - System Type: 64-bit operating system, x64-based processor
    - Processor: Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz (2 processors)
    - Installed RAM: 60.0 GB
+   - Hard disk: 512 Gb
+
 
 *** Virtualization Setup:
    - VirtualBox Version: 7.0
@@ -114,21 +116,22 @@ underway to protect its habitat and populations.
      - RAM: At least 24 GB
      - CPUs: At least 12
      - Software: Docker installed (Version 20.10.21)
+       
 *** Licensing
    - CDP Private Cloud Base free trial:
      [[https://www.cloudera.com/downloads/cdp-private-cloud-trial/cdp-private-cloud-base-trial.html]]
    - HPE Ezmeral Data Fabric free trial: [[https://docs.ezmeral.hpe.com/datafabric/76/licensing/obtaining_a_license.html]]
 
 *** Important Note:
-   - No WSL2: Windows Subsystem for Linux 2 (WSL2) should not be used for
+   - *Windows Subsystem for Linux 2 (WSL2) should not be used* because of
      compatibility issues with virtualbox and Windows 10.
-   - Disable Hyper-V:
+   - For this reason, it is recommended to disable Hyper-V:
 
      #+begin_src shell
-bcdedit /set hypervisorlaunchtype off
+     bcdedit /set hypervisorlaunchtype off
      #+end_src
 
-** Setup
+** Setup (Layer 1)
 
 - Clone this repository on your workstation:
   
@@ -154,7 +157,7 @@ cd terraform && terraform init && terraform plan -out main.tfplan
 **** Run terraform apply to apply the execution plan
 
   #+begin_src shell
-terraform apply main.tfplan
+  terraform apply main.tfplan
   #+end_src
 
 **** Verify the results
