@@ -32,7 +32,7 @@ underway to protect its habitat and populations.
 
 ** Project Overview:
    The aim of our project is to facilitate the creation of lab environments for
-   a learning company that specializes in teaching Hadoop courses. These courses
+   a learning company that specializes in teaching Big Data courses. These courses
    are designed to provide students with hands-on experience in working with
    Hadoop distributions, including OSS, Cloudera, and MapR. Our toolbox offers
    easy deployment of these Hadoop distributions using various methods, allowing
@@ -142,11 +142,19 @@ underway to protect its habitat and populations.
 
 *** Vagrant
 
+You can choose to deploy your cluster on the windows host provided by the
+learning company.
+
 *** Docker
+
+You can choose to deploy your cluster locally on a unix-like system (including a
+pre-provisionned ubuntu virtual box running on the windows host provided by the
+learning company).
+
 
 *** Terraform
 
-You can choose to deploy your cluster to the cloud (Azure)
+You can choose to deploy your cluster to the cloud (Azure).
 
 **** Initialisation
 
@@ -192,5 +200,7 @@ terraform apply main.destroy.tfplan
 * Contribution
 
 * License
+
+This project is licensed under the [[file:LICENSE][GNU General Public License v3.0]].
 
 * Acknowledgments
