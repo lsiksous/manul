@@ -309,6 +309,14 @@ cluster that we have provisioned earlier.
    10.0.1.5 node03.manul.arpa node03
    10.0.1.2 edge.manul.arpa edge
    #+end_example
+   
+   Now copy this hosts file to /etc/hosts.
+
+7. Run ansible playbook:
+
+   #+begin_src shell
+   ansible-playbook -i inventory.ini mapr-configure.yml
+   #+end_src
 
 * Usage
 
@@ -317,7 +325,7 @@ cluster that we have provisioned earlier.
 * Contribution
 
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
-  python. Thanks !
+  python. Thanks Khoudia !
 
 * License
 
