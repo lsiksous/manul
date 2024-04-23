@@ -1,6 +1,5 @@
 ---
 - name: Copy SSH public key to all nodes
-  become: yes
   become_user: "{{ mapr_user }}"
   authorized_key:
     user: "{{ mapr_user }}"
