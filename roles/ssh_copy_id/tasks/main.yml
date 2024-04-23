@@ -4,5 +4,5 @@
   become_user: "{{ mapr_user }}"
   authorized_key:
     user: "{{ mapr_user }}"
-    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', '/home/{{ mapr_user }}.ssh/id_rsa.pub') }}"
 
