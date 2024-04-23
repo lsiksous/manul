@@ -1,7 +1,21 @@
 
 ---
-- name: Copy SSH public key to all nodes
-  become_user: "{{ mapr_user }}"
+- name: fetch all public keys from managed nodes to manager
+  fetch: 
+    src: "/home/{{ mapr_user }}/.ssh/id_rsa.pub"
+    dest: "tmp/{{ ansible_hostname }}-id_rsa.pub"
+    flat: yes
+    
+- name: authorize public key for all nodes
   authorized_key:
     user: "{{ mapr_user }}"
-    key: "{{ lookup('file', '/home/' + mapr_user + '/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', 'tmp/{{ item }}-id_rsa.pub')}}"
+    state: present
+  with_items:
+    - "{{ groups['all'] }}"
+
+- name: remove local public key copies
+  become: false
+  local_action: file dest='tmp/' state=absent
+  changed_when: false
+  run_once: true
