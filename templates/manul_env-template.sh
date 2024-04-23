@@ -8,6 +8,7 @@ export HPE_TOKEN=<HPE_TOKEN>
 
 export MAPR_USER=mapr
 export MAPR_PASSWD=mapr
+export MAPR_GROUP=mapr
 export MAPR_GID=5000
 export MAPR_UID=5000
 

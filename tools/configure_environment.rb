@@ -21,7 +21,7 @@ def configure_environment(config)
       node.vm.disk :disk, size: "20GB", name: "disk1"
       node.vm.disk :disk, size: "20GB", name: "disk2"
       node.vm.hostname = "node0#{i}"
-      node.vm.network "public_network", ip: IP_NTW + "#{CONTROLLER_IP_START + i}", bridge: "#$default_network_interface"
+      node.vm.network "public_network", ip: IP_NTW + "#{NODE_IP_START + i}", bridge: "#$default_network_interface"
     end
   end
 
