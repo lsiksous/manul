@@ -4,9 +4,9 @@
   become: true
   roles:
     - create_mapr_user
+    - add_sudoer_user
     - generate_ssh_key
     - ssh_copy_id
-    - add_sudoer_user
 
 - name: Populate hosts file
   hosts: nodes
