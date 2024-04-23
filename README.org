@@ -226,7 +226,46 @@ cluster that we have provisioned earlier.
    git pull
    #+end_src
 
-3. Check ansible version:
+3. Customize environment variables:
+
+   #+begin_src shell
+   cp templates/manul_env-template.sh manul_env.sh
+   #+end_src
+
+   Edit the file to reflect your desired values for important variables. It may
+   contains secrets so it will not be synced on remote origin.
+
+   #+begin_example
+   vagrant@edge:~/manul$ cat manul_env.sh 
+   #!/bin/bash
+
+   export CLUSTER_NAME=manul.arpa
+
+   # MapR distribution env variables
+   #export HPE_USER=<HPE_USER>
+   #export HPE_TOKEN=<HPE_TOKEN>
+
+   export MAPR_USER=mapr
+   export MAPR_PASSWD=mapr
+   export MAPR_GID=5000
+   export MAPR_UID=5000
+
+
+   # OSS distribution env variables
+   export HADOOP_USER=hadoop
+   export HADOOP_PASSWD=hadoop
+   #+end_example
+
+   You should have obtain a passport from HPE. It is mandatory that you include
+   it here.
+
+   Source it:
+
+   #+begin_src shell
+   source manul_env.sh
+   #+end_src
+
+4. Check ansible version:
    
    #+BEGIN_EXAMPLE
    vagrant@edge:~/manul$ ansible --version
@@ -238,7 +277,7 @@ cluster that we have provisioned earlier.
      python version = 2.7.17 (default, Mar  8 2023, 18:40:28) [GCC 7.5.0]
    #+END_EXAMPLE
 
-4. verify that vagrant configure environment suits to your need:
+5. verify that vagrant configure environment suits to your need:
 
    #+begin_example
    vagrant@edge:~/manul$ head -10 tools/configure_environment.rb
@@ -254,7 +293,7 @@ cluster that we have provisioned earlier.
    you had made changes in the vagrant provisioning step, you will have to
    reflect them in this file.
 
-5. Generate hosts file:
+6. Generate hosts file:
 
    #+begin_example
    vagrant@edge:~/manul$ tools/generate_hosts_file.sh
@@ -267,10 +306,10 @@ cluster that we have provisioned earlier.
    vagrant@edge:~/manul$ cat hosts
    127.0.0.1 localhost
 
-   10.0.1.3 node01
-   10.0.1.4 node02
-   10.0.1.5 node03
-   10.0.1.2 edge
+   10.0.1.3 node01.manul.arpa
+   10.0.1.4 node02.manul.arpa
+   10.0.1.5 node03.manul.arpa
+   10.0.1.2 edge.manul.arpa
    #+end_example
 
 * Usage
