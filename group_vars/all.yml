@@ -1,0 +1,6 @@
+mapr_user: "{{ lookup('env', 'MAPR_USER') }}"
+mapr_group:  "{{ lookup('env', 'MAPR_GROUP') }}"
+mapr_uid: "{{ lookup('env', 'MAPR_UID') }}"
+mapr_gid:  "{{ lookup('env', 'MAPR_GID') }}"
+
+

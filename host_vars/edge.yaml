@@ -1,0 +1,2 @@
+hpe_user:  "{{ lookup('env', 'HPE_USER') }}"
+hpe_token:  "{{ lookup('env', 'HPE_TOKEN') }}"

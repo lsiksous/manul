@@ -256,10 +256,8 @@ cluster that we have provisioned earlier.
    export HADOOP_PASSWD=hadoop
    #+end_example
 
-   You should have obtain a passport from HPE. It is mandatory that you include
-   it here.
-
-   Source it:
+   You should have obtained a passport from HPE. It is mandatory that you include
+   it here. After that, source the file:
 
    #+begin_src shell
    source manul_env.sh
@@ -318,7 +316,8 @@ cluster that we have provisioned earlier.
 
 * Contribution
 
-- [[https://github.com/fall5443][Khoudia Fall]] (@fall5443)
+- [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
+  python. Thanks !
 
 * License
 
