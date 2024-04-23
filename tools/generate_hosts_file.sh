@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Vagrantfile path
-VAGRANTFILE="Vagrantfile"
+VAGRANTFILE="tools/configure_environment.rb"
 
 # Extract values using grep and awk
 NUM_NODES=$(grep -m1 'NUM_NODES' "$VAGRANTFILE" | awk -F '=' '{print $2}' | tr -d ' ')

@@ -221,14 +221,16 @@ cluster that we have provisioned earlier.
 2. Check ansible version:
 
 #+BEGIN_EXAMPLE
-  vagrant@edge:~$ ansible --version
-  ansible 2.5.1
-  config file = /etc/ansible/ansible.cfg
+vagrant@edge:~/manul$ ansible --version
+ansible 2.5.1
+  config file = /home/vagrant/manul/ansible.cfg
   configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']      
   ansible python module location = /usr/lib/python2.7/dist-packages/ansible
   executable location = /usr/bin/ansible
   python version = 2.7.17 (default, Mar  8 2023, 18:40:28) [GCC 7.5.0]
 #+END_EXAMPLE
+
+
 
 * Usage
 
