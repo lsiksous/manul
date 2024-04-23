@@ -1,5 +1,5 @@
 ---
 - name: copy /etc/hosts to all nodes
   copy:
-    src: /etc/hosts
+    src: hosts
     dest: /etc/hosts

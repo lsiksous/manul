@@ -18,12 +18,12 @@ hosts="127.0.0.1 localhost\n"
 for ((i = 1; i <= NUM_NODES; i++)); do
     hostname="node0$i"
     ip_address="${IP_NTW}$((CONTROLLER_IP_START + i))"
-    hosts+="\n${ip_address} ${hostname}"
+    hosts+="\n${ip_address} ${hostname}.${CLUSTER_NAME}"
 done
 
 # Generate entry for controller node
 controller_ip="${IP_NTW}${CONTROLLER_IP_START}"
-hosts+="\n${controller_ip} edge"
+hosts+="\n${controller_ip} edge.${CLUSTER_NAME}"
 
 # Write to hosts file
 echo -e "$hosts" > hosts
