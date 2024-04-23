@@ -8,3 +8,4 @@ echo -e "root\nroot" | (passwd root)
 sudo apt update -y
 sudo apt install wget ansible sshpass git -y
 git clone https://github.com/lsiksous/manul.git
+chown -R vagrant:vagrant manul
