@@ -22,7 +22,7 @@ for ((i = 1; i <= NUM_NODES; i++)); do
 done
 
 # Generate entry for controller node
-controller_ip="${IP_NTW}${CONTROLLER_IP_START}"
+controller_ip="${IP_NTW}${CONTROLLER_IP_START + 1}"
 hosts+="\n${controller_ip} edge.${CLUSTER_NAME} edge"
 
 # Write to hosts file
