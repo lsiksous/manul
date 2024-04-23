@@ -304,10 +304,10 @@ cluster that we have provisioned earlier.
    vagrant@edge:~/manul$ cat hosts
    127.0.0.1 localhost
 
-   10.0.1.3 node01.manul.arpa node01
-   10.0.1.4 node02.manul.arpa node02
-   10.0.1.5 node03.manul.arpa node03
-   10.0.1.2 edge.manul.arpa edge
+   10.0.1.4 node01.manul.arpa node01
+   10.0.1.5 node02.manul.arpa node02
+   10.0.1.6 node03.manul.arpa node03
+   10.0.1.3 edge.manul.arpa edge
    #+end_example
    
    Now copy this hosts file to /etc/hosts.
@@ -316,6 +316,12 @@ cluster that we have provisioned earlier.
 
    #+begin_src shell
    ansible-playbook -i inventory.ini mapr-configure.yml
+   #+end_src
+8. Now you should be able to launch the mapr installer (see Configuration chapter
+   to continue installation):
+
+   #+begin_src shell
+   sudo /tmp/mapr-setup.sh -r https://$HPE_USER:$HPE_TOKEN@package.ezmeral.hpe.com/releases/
    #+end_src
 
 * Usage
