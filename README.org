@@ -193,6 +193,43 @@ terraform plan -destroy -out main.destroy.tfplan
 terraform apply main.destroy.tfplan
 #+end_src
 
+** Automated Installation Using the MapR Installer
+
+MapR provides an installer that simplifies the process of setting up a cluster
+by automating many of the steps. This method is recommended for users who want a
+straightforward installation process and are willing to use a somewhat
+standardized cluster configuration.
+
+Steps Involved:
+- Setup an installation node that can communicate with all other nodes in the
+  cluster.
+- Run the MapR Installer from a web-based interface provided by MapR, which
+  guides you through the process.
+- Select the services and features you wish to install (like MapR-FS, MapR-DB,
+  Hadoop components, etc.).
+- The installer automatically configures and deploys the selected services
+  across the cluster.
+
+To illustrate the installation of this distribution, we will use a vagrant
+cluster that we have provisioned earlier.
+
+1. Connect via ssh to your edge machine:
+
+   #+begin_src shell
+   vagrant ssh edge
+   #+end_src
+2. Check ansible version:
+
+#+BEGIN_EXAMPLE
+  vagrant@edge:~$ ansible --version
+  ansible 2.5.1
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']      
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.17 (default, Mar  8 2023, 18:40:28) [GCC 7.5.0]
+#+END_EXAMPLE
+
 * Usage
 
 * Configuration
@@ -200,7 +237,6 @@ terraform apply main.destroy.tfplan
 * Contribution
 
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443)
-
 
 * License
 
