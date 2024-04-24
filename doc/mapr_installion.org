@@ -1,0 +1,2 @@
+💈 MapR Installation and Configuration Guide
+#+AUTHOR: Laurent Siksous

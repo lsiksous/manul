@@ -388,16 +388,19 @@ cluster that we have provisioned earlier.
   additional services or features.
 
 - *Security Setup:* MapR provides robust security features to protect data and
-  resources within the cluster. We'll configure security settings such as
+  resources within the cluster. We should configure security settings such as
   authentication mechanisms, access controls, encryption, and auditing to ensure
-  the confidentiality, integrity, and availability of data.
+  the confidentiality, integrity, and availability of data. But we'll leave this
+  step out for the moment as it is a complex subject and we only need a sandbox
+  for teaching first essential concepts to newbies. Nonetheless, there
+  definitely should be a dedicated course and labs on this one.
 
 - *Post-Installation Tasks:* After the installation is complete, we may need to
   perform additional tasks such as verifying the installation, testing cluster
   functionality, configuring high availability and disaster recovery, and
   integrating with other systems or applications.
 
-A this is pretty a long process, we made a dedicated documentation for this step
+This is a pretty long process, so we made a dedicated documentation for this step
 (See [[file:doc/mapr_installation]])
 
 
