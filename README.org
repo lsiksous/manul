@@ -28,9 +28,36 @@ habitat loss, degradation, and hunting pressures. Conservation efforts are
 underway to protect its habitat and populations. 
 #+END_QUOTE
 
-* Table of Contents
-#+TOC: headlines 2
+* Contents                                                         :noexport:
+:PROPERTIES:
+:TOC:      :include siblings :depth 3
+:END:
 
+:CONTENTS:
+- [[#introduction][Introduction]]
+  - [[#project-overview][Project Overview]]
+  - [[#toolbox-features][Toolbox Features]]
+  - [[#benefits][Benefits]]
+  - [[#future-enhancements][Future Enhancements]]
+- [[#installation][Installation]]
+  - [[#requirements][Requirements]]
+    - [[#development-environment][Development Environment]]
+    - [[#virtualization-setup][Virtualization Setup]]
+    - [[#software-dependencies][Software Dependencies]]
+    - [[#virtual-machine-requirements][Virtual Machine Requirements]]
+    - [[#licensing][Licensing]]
+    - [[#important-note][Important Note]]
+  - [[#setup-layer-1][Setup (Layer 1)]]
+    - [[#vagrant][Vagrant]]
+    - [[#docker][Docker]]
+    - [[#terraform][Terraform]]
+  - [[#automated-installation-using-the-mapr-installer][Automated Installation Using the MapR Installer]]
+- [[#usage][Usage]]
+- [[#configuration][Configuration]]
+- [[#contribution][Contribution]]
+- [[#license][License]]
+- [[#acknowledgments][Acknowledgments]]
+:END:
 
 * Introduction
 
