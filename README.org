@@ -325,9 +325,7 @@ cluster that we have provisioned earlier.
    #+end_example
 
    Normally, it should be the 3 nodes cluster that this document is based on. If
-   you had made changes in the vagrant provisioning step, you will have to
-   reflect them in this file.
-
+   you had made changes in the vagrant provisioning step, it will be different.
 6. Generate hosts file:
 
    #+begin_example
@@ -351,8 +349,9 @@ cluster that we have provisioned earlier.
 
 7. Check your inventory
 
-   You must verify that your inventory is coherent with your hosts
-   file. Normally, it should look like this:
+   You must verify that your inventory is coherent with your hosts file. If you
+   had made changes in the vagrant provisioning step, you will have to reflect
+   them in this file. Normally, it should look like this:
 
    #+begin_example
    [edges]
