@@ -312,7 +312,7 @@ cluster that we have provisioned earlier.
      python version = 2.7.17 (default, Mar  8 2023, 18:40:28) [GCC 7.5.0]
    #+END_EXAMPLE
 
-5. verify that vagrant configure environment suits to your need:
+5. Verify that vagrant configure environment suits to your need:
 
    #+begin_example
    vagrant@edge:~/manul$ head -10 tools/configure_environment.rb
@@ -386,10 +386,7 @@ Hue serves as a comprehensive web-based interface for interacting with our
 cluster, providing a user-friendly environment for data exploration, querying,
 and job orchestration. With its intuitive interface, Hue simplifies access to
 various components of the Hadoop ecosystem, allowing users to run SQL queries,
-visualize data, manage Hadoop jobs, and more. By leveraging Hue, we streamline
-our workflows and empower users to interact with the cluster efficiently,
-accelerating data analysis and decision-making processes.
-
+visualize data, manage Hadoop jobs, and more.
 
 
 ** Monitoring the cluster
@@ -399,8 +396,7 @@ analyze, and optimize its performance. Grafana, an open-source monitoring
 platform, enables us to visualize key metrics and trends, facilitating proactive
 management and troubleshooting. By configuring Grafana to connect with our
 cluster's metrics, we gain valuable insights into resource utilization, health
-status, and system behavior, empowering us to make data-driven decisions and
-ensure optimal cluster performance.
+status, and system behavior.
 
 [[https://ef3d-2a01-7a7-2-39fd-80f7-6016-4218-e4c.ngrok-free.app][Grafana Monitoring Dashboard]]
 
