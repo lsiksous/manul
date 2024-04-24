@@ -51,9 +51,10 @@ underway to protect its habitat and populations.
     - [[#vagrant][Vagrant]]
     - [[#docker][Docker]]
     - [[#terraform][Terraform]]
-  - [[#automated-installation-using-the-mapr-installer][Automated Installation Using the MapR Installer]]
+  - [[#automated-installation-using-the-mapr-installer-layer-2][Automated Installation Using the MapR Installer (Layer 2)]]
 - [[#usage][Usage]]
 - [[#configuration][Configuration]]
+  - [[#running-the-mapr-installer-layer-3][Running the MapR Installer (Layer 3)]]
 - [[#contribution][Contribution]]
 - [[#license][License]]
 - [[#acknowledgments][Acknowledgments]]
@@ -71,7 +72,7 @@ underway to protect its habitat and populations.
    techniques.
 
 
-[[file:media/topo.png]]
+[[file:media/archi.png]]
 
    
 ** Toolbox Features
@@ -176,6 +177,10 @@ underway to protect its habitat and populations.
 You can choose to deploy your cluster on the windows host provided by the
 learning company.
 
+
+[[file:media/topo.png]]
+
+
 *** Docker
 
 You can choose to deploy your cluster locally on a unix-like system (including a
@@ -224,7 +229,7 @@ terraform plan -destroy -out main.destroy.tfplan
 terraform apply main.destroy.tfplan
 #+end_src
 
-** Automated Installation Using the MapR Installer
+** Automated Installation Using the MapR Installer (Layer 2)
 
 MapR provides an installer that simplifies the process of setting up a cluster
 by automating many of the steps. This method is recommended for users who want a
@@ -343,12 +348,21 @@ cluster that we have provisioned earlier.
    
    Now copy this hosts file to /etc/hosts.
 
-7. Run ansible playbook:
+7. Check your inventory
+
+   You must verify that your inventory is coherent with your hosts file:
+
+   #+begin_example
+   
+   #+end_example
+
+8. Run ansible playbook:
 
    #+begin_src shell
    ansible-playbook -i inventory.ini mapr-configure.yml
    #+end_src
-8. Now you should be able to launch the mapr installer (see Configuration chapter
+
+9. Now you should be able to launch the mapr installer (see Configuration chapter
    to continue installation):
 
    #+begin_src shell
@@ -358,6 +372,10 @@ cluster that we have provisioned earlier.
 * Usage
 
 * Configuration
+
+** Running the MapR Installer (Layer 3)
+
+
 
 * Contribution
 
