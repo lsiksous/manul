@@ -60,6 +60,9 @@ underway to protect its habitat and populations.
 - [[#acknowledgments][Acknowledgments]]
 :END:
 
+
+[[file:media/archi.png]]
+
 * Introduction
 
 ** Project Overview
@@ -70,9 +73,6 @@ underway to protect its habitat and populations.
    easy deployment of these Hadoop distributions using various methods, allowing
    students to explore different deployment and configuration management
    techniques.
-
-
-[[file:media/archi.png]]
 
    
 ** Toolbox Features
@@ -258,7 +258,6 @@ cluster that we have provisioned earlier.
 
    #+begin_src shell
    cd manul
-   git config --global --add safe.directory /home/vagrant/manul
    git pull
    #+end_src
 
