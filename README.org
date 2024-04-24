@@ -53,6 +53,7 @@ underway to protect its habitat and populations.
     - [[#terraform][Terraform]]
   - [[#automated-installation-using-the-mapr-installer-layer-2][Automated Installation Using the MapR Installer (Layer 2)]]
 - [[#usage][Usage]]
+  - [[#interacting-with-the-cluster][Interacting with the cluster]]
   - [[#monitoring-the-cluster][Monitoring the cluster]]
 - [[#configuration][Configuration]]
   - [[#running-the-mapr-installer-layer-3][Running the MapR Installer (Layer 3)]]
@@ -378,6 +379,18 @@ cluster that we have provisioned earlier.
    #+end_src
 
 * Usage
+
+** Interacting with the cluster
+
+Hue serves as a comprehensive web-based interface for interacting with our
+cluster, providing a user-friendly environment for data exploration, querying,
+and job orchestration. With its intuitive interface, Hue simplifies access to
+various components of the Hadoop ecosystem, allowing users to run SQL queries,
+visualize data, manage Hadoop jobs, and more. By leveraging Hue, we streamline
+our workflows and empower users to interact with the cluster efficiently,
+accelerating data analysis and decision-making processes.
+
+
 
 ** Monitoring the cluster
 
