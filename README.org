@@ -60,9 +60,6 @@ underway to protect its habitat and populations.
 - [[#acknowledgments][Acknowledgments]]
 :END:
 
-
-[[file:media/archi.png]]
-
 * Introduction
 
 ** Project Overview
@@ -73,6 +70,8 @@ underway to protect its habitat and populations.
    easy deployment of these Hadoop distributions using various methods, allowing
    students to explore different deployment and configuration management
    techniques.
+
+   [[file:media/archi.png]]
 
    
 ** Toolbox Features
@@ -268,7 +267,8 @@ cluster that we have provisioned earlier.
    #+end_src
 
    Edit the file to reflect your desired values for important variables. It may
-   contains secrets so it will not be synced on remote origin.
+   contains secrets so it will not be synced on remote origin. Think about
+   saving it somewhere privately in case of a problem.
 
    #+begin_example
    vagrant@edge:~/manul$ cat manul_env.sh 
@@ -382,7 +382,7 @@ cluster that we have provisioned earlier.
 
 ** Running the MapR Installer (Layer 3)
 
-
+[[file:media/mapr/install_01.png]]
 
 * Contribution
 
