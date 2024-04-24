@@ -369,7 +369,7 @@ cluster that we have provisioned earlier.
    ansible-playbook -i inventory.ini mapr-configure.yml
    #+end_src
 
-9. Now you should be able to launch the mapr installer (see Configuration chapter
+9. Now you should be able to launch the mapr installer (see [[#configuration][Configuration]] chapter
    to continue installation):
 
    #+begin_src shell
@@ -381,6 +381,26 @@ cluster that we have provisioned earlier.
 * Configuration
 
 ** Running the MapR Installer (Layer 3)
+
+- *Cluster Configuration:* We'll configure the MapR cluster according to our
+  requirements. This includes specifying the nodes that will participate in the
+  cluster, configuring storage and network settings, and setting up any
+  additional services or features.
+
+- *Security Setup:* MapR provides robust security features to protect data and
+  resources within the cluster. We'll configure security settings such as
+  authentication mechanisms, access controls, encryption, and auditing to ensure
+  the confidentiality, integrity, and availability of data.
+
+- *Post-Installation Tasks:* After the installation is complete, we may need to
+  perform additional tasks such as verifying the installation, testing cluster
+  functionality, configuring high availability and disaster recovery, and
+  integrating with other systems or applications.
+
+A this is pretty a long process, we made a dedicated documentation for this step
+(See [[file:doc/mapr_installation]])
+
+
 
 [[file:media/mapr/install_01.png]]
 
