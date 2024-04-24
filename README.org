@@ -401,7 +401,7 @@ cluster that we have provisioned earlier.
   integrating with other systems or applications.
 
 This is a pretty long process, so we made a dedicated documentation for this step
-(See [[file:doc/mapr_installation]])
+(See [[file:doc/mapr_configration.org]]
 
 
 
