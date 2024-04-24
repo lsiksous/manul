@@ -334,7 +334,7 @@ cluster that we have provisioned earlier.
    Hosts file generated successfully.
    #+end_example
 
-   You should obtain something like that:
+   You should obtain something like this:
 
    #+begin_example
    vagrant@edge:~/manul$ cat hosts
@@ -350,10 +350,18 @@ cluster that we have provisioned earlier.
 
 7. Check your inventory
 
-   You must verify that your inventory is coherent with your hosts file:
+   You must verify that your inventory is coherent with your hosts
+   file. Normally, it should look like this:
 
    #+begin_example
-   
+   [edges]
+   edge ansible_host=10.0.1.3 ansible_user=vagrant ansible_password=vagrant
+
+   [nodes]
+   node01 ansible_host=10.0.1.4 ansible_user=vagrant ansible_password=vagrant
+   node02 ansible_host=10.0.1.5 ansible_user=vagrant ansible_password=vagrant
+   node03 ansible_host=10.0.1.6 ansible_user=vagrant ansible_password=vagrant
+   # Add more nodes as needed
    #+end_example
 
 8. Run ansible playbook:
