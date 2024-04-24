@@ -53,6 +53,7 @@ underway to protect its habitat and populations.
     - [[#terraform][Terraform]]
   - [[#automated-installation-using-the-mapr-installer-layer-2][Automated Installation Using the MapR Installer (Layer 2)]]
 - [[#usage][Usage]]
+  - [[#monitoring-the-cluster][Monitoring the cluster]]
 - [[#configuration][Configuration]]
   - [[#running-the-mapr-installer-layer-3][Running the MapR Installer (Layer 3)]]
 - [[#contribution][Contribution]]
@@ -378,6 +379,19 @@ cluster that we have provisioned earlier.
 
 * Usage
 
+** Monitoring the cluster
+
+Utilizing Grafana for monitoring our cluster enhances our ability to observe,
+analyze, and optimize its performance. Grafana, an open-source monitoring
+platform, enables us to visualize key metrics and trends, facilitating proactive
+management and troubleshooting. By configuring Grafana to connect with our
+cluster's metrics, we gain valuable insights into resource utilization, health
+status, and system behavior, empowering us to make data-driven decisions and
+ensure optimal cluster performance.
+
+[[https://ef3d-2a01-7a7-2-39fd-80f7-6016-4218-e4c.ngrok-free.app][Grafana Monitoring Dashboard]]
+
+
 * Configuration
 
 ** Running the MapR Installer (Layer 3)
@@ -397,8 +411,7 @@ cluster that we have provisioned earlier.
 
 - *Post-Installation Tasks:* After the installation is complete, we may need to
   perform additional tasks such as verifying the installation, testing cluster
-  functionality, configuring high availability and disaster recovery, and
-  integrating with other systems or applications.
+  functionality and integrating with other systems or applications.
 
 This is a pretty long process, so we made a dedicated documentation for this step
 (See [[file:doc/mapr_configuration.org]]
