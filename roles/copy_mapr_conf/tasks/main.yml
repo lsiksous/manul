@@ -3,14 +3,10 @@
   fetch:
     src: "/opt/mapr/conf/ssl_truststore"
     dest: "/opt/mapr/conf/"
-    flat: yes
   delegate_to: "{{ source_node }}"
-  become: true
 
 - name: Copy ssl-client.xml from cluster node to client
   fetch:
     src: "/opt/mapr/conf/ssl-client.xml"
     dest: "/opt/mapr/conf/"
-    flat: yes
   delegate_to: "{{ source_node }}"
-  become: true
