@@ -1,0 +1,2 @@
+hive_user: "{{ lookup('env', 'HIVE_USER') }}"
+hive_passwd:  "{{ lookup('env', 'HIVE_PASSWD') }}"

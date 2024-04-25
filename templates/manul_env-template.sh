@@ -12,6 +12,9 @@ export MAPR_GROUP=mapr
 export MAPR_GID=5000
 export MAPR_UID=5000
 
+# Hive user
+export HIVE_USER=hive
+export HIV_PASSWD=hive
 
 # OSS distribution env variables
 export HADOOP_USER=hadoop

@@ -1,0 +1,6 @@
+---
+- name: Copy hive-site.xml to the cluster
+  hosts: edge
+  become: true
+  roles:
+    - copy_hive_site
