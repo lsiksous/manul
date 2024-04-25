@@ -1,8 +1,11 @@
 ---
 - name: Controller node post-install
   hosts: edge
+  vars:
+    source_node: node03
   become: true
   roles:
     - swapfile
     - mapr_sources
     - mapr_client
+    - copy_mapr_conf
