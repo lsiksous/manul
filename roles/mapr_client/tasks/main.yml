@@ -1,0 +1,15 @@
+- name: Update package lists
+  apt:
+    update_cache: yes
+  become: true
+
+- name: Install MapR client packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  loop:
+    - mapr-client
+    - mapr-posix-client-basic
+    - mapr-core
+    - mapr-spark
