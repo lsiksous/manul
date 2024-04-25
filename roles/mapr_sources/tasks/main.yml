@@ -1,8 +1,4 @@
 ---
-- name: Add MapR repository GPG key
-  command: "wget -q -O - --timeout=30 {{ mapr_gpg_key_url }} | apt-key add -"
-  become: true
-
 - name: Add MapR repositories
   apt_repository:
     repo: "{{ item.repo }}"
