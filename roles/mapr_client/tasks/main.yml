@@ -11,5 +11,4 @@
   loop:
     - mapr-client
     - mapr-posix-client-basic
-    - mapr-core
     - mapr-spark
