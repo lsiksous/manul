@@ -1,8 +1,5 @@
 ---
-- name: Copy hive-site.xml to node03
-  hosts: node03
-  tasks:
-    - name: Copy hive-site.xml template to the destination directory
-      template:
-        src: hive-site.xml.j2         # Template path relative to the project's templates directory
-        dest: "/opt/mapr/hive/hive-{{ hive_version }}/conf/hive-site.xml"
+- name: Copy hive-site.xml template to the destination directory
+  template:
+    src: hive-site.xml.j2 
+     dest: "/opt/mapr/hive/hive-{{ hive_version }}/conf/hive-site.xml"

@@ -1,6 +1,6 @@
 ---
 - name: Copy hive-site.xml to the cluster
-  hosts: edge
+  hosts: node03
   become: true
   roles:
     - copy_hive_site
