@@ -1,5 +1,7 @@
 ---
 # MapR env variables
+cluster_name: "{{ lookup('env', 'CLUSTER_NAME') }}"
+
 mapr_user: "{{ lookup('env', 'MAPR_USER') }}"
 mapr_group:  "{{ lookup('env', 'MAPR_GROUP') }}"
 mapr_uid: "{{ lookup('env', 'MAPR_UID') }}"
