@@ -1,15 +1,17 @@
 ---
 - name: Add or replace JAVA_HOME in /etc/environment
-  replace:
-    dest: /etc/environment
-    regexp: '^JAVA_HOME=.*'
+  lineinfile:
+    path: /etc/environment
+    regexp: '^JAVA_HOME='
     line: 'JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64'
+    state: present
 
 - name: Add or replace LD_LIBRARY_PATH in /etc/environment
-  replace:
-    dest: /etc/environment
-    regexp: '^LD_LIBRARY_PATH=.*'
+  lineinfile:
+    path: /etc/environment
+    regexp: '^LD_LIBRARY_PATH='
     line: 'LD_LIBRARY_PATH=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/amd64/server:/opt/mapr/lib'
+    state: present
 
 - name: Add or replace JAVA_HOME in .bashrc
   lineinfile:
