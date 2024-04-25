@@ -10,3 +10,4 @@
     - mapr_client
     - copy_mapr_conf
     - nfs_packages
+    - java_env
