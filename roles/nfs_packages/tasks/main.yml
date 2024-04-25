@@ -1,4 +1,4 @@
---
+---
 - name: Install default-jre package
   apt:
     name: default-jre
