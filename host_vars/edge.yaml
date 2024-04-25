@@ -4,7 +4,7 @@ hpe_user:  "{{ lookup('env', 'HPE_USER') }}"
 hpe_token:  "{{ lookup('env', 'HPE_TOKEN') }}"
 
 # MapR GPG key URL
-mapr_gpg_key_url: "http://{{ hpe_user | urlencode }}:{{ hpe_token }}@package.ezmeral.hpe.com/releases/pub/maprgpg.key"
+mapr_gpg_key_url: "https://{{ hpe_user | urlencode }}:{{ hpe_token }}@package.ezmeral.hpe.com/releases/pub/maprgpg.key"
 
 # MapR repository URLs
 mapr_repos:
