@@ -1,0 +1,30 @@
+--
+- name: Install default-jre package
+  apt:
+    name: default-jre
+    state: present
+  become: true
+
+- name: Install default-jdk package
+  apt:
+    name: default-jdk
+    state: present
+  become: true
+
+- name: Install openjdk-8-jdk package
+  apt:
+    name: openjdk-8-jdk
+    state: present
+  become: true
+
+- name: Install syslinux-utils package
+  apt:
+    name: syslinux-utils
+    state: present
+  become: true
+
+- name: Install nfs-common package
+  apt:
+    name: nfs-common
+    state: present
+  become: true

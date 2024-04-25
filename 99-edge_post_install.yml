@@ -9,3 +9,4 @@
     - mapr_sources
     - mapr_client
     - copy_mapr_conf
+    - nfs_packages
