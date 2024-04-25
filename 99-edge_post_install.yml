@@ -11,3 +11,4 @@
     - copy_mapr_conf
     - nfs_packages
     - java_env
+    - configure_sh_client

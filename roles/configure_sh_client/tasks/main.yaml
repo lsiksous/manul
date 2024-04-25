@@ -1,0 +1,13 @@
+---
+- name: Execute MapR configure.sh command
+  shell: >
+    /opt/mapr/server/configure.sh
+    -N {{ cluster_name }}
+    -C "{{ groups['node_group'] | map('regex_replace', '^(.*)$', '\\1.' + cluster_name) | join(',') }}"
+    -Z "{{ groups['node_group'] | map('regex_replace', '^(.*)$', '\\1.' + cluster_name) | join(',') }}"
+    -c
+  register: command_output
+
+- name: Debug command output
+  debug:
+    var: command_output.stdout_lines
