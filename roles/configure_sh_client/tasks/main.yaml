@@ -3,8 +3,8 @@
   shell: >
     /opt/mapr/server/configure.sh
     -N {{ cluster_name }}
-    -C "{{ groups['nodes'] | join("." + cluster_name + ",") }}"
-    -Z "{{ groups['nodes'] | join("." + cluster_name + ",") }}"
+    -C "{{ groups['nodes'] | join("." + cluster_name + ",") }}" + "{{ cluster_name }}"
+    -Z "{{ groups['nodes'] | join("." + cluster_name + ",") }}" + "{{ cluster_name }}"
     -c
   register: command_output
 
