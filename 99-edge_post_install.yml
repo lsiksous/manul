@@ -12,3 +12,4 @@
     - nfs_packages
     - java_env
     - configure_sh_client
+    - posix_mount_nfs

@@ -1,0 +1,35 @@
+---
+- name: Ensure fusermount has setuid permission
+  become: yes
+  become_user: root
+  become_method: sudo
+  file:
+    path: /opt/mapr/bin/fusermount
+    mode: u+s
+
+- name: Start mapr-posix-client-basic service
+  become: yes
+  become_user: root
+  become_method: sudo
+  service:
+    name: mapr-posix-client-basic
+    state: started
+
+- name: Check status of mapr-posix-client-basic service
+  command: systemctl status mapr-posix-client-basic.service
+  register: service_status
+
+- name: Show NFS exports from node01
+  command: showmount -e node01
+  register: nfs_exports
+
+- name: Mount NFS share from node01
+  become: yes
+  become_user: root
+  become_method: sudo
+  mount:
+    name: /mapr_nfs
+    src: "node01:/mapr"
+    fstype: nfs
+    state: mounted
+
