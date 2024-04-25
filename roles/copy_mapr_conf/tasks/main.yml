@@ -1,12 +1,16 @@
 ---
 - name: Copy ssl_truststore from cluster node to client
-  synchronize:
+  run_once: yes
+  fetch:
     src: "/opt/mapr/conf/ssl_truststore"
     dest: "/opt/mapr/conf/"
-  delegate_to: "{{ source_node }}"
+    flat: yes
+   delegate_to: "{{ source_node }}"
 
 - name: Copy ssl-client.xml from cluster node to client
-  synchronize:
+  run_once: yes
+  fetch:
     src: "/opt/mapr/conf/ssl-client.xml"
     dest: "/opt/mapr/conf/"
+    flat: yes
   delegate_to: "{{ source_node }}"
