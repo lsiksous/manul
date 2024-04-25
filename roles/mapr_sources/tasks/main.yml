@@ -1,0 +1,13 @@
+---
+- name: Add MapR repository GPG key
+  apt_key:
+    url: "{{ mapr_gpg_key_url }}"
+    state: present
+  become: true
+
+- name: Add MapR repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: present
+  become: true
+  loop: "{{ mapr_repos }}"

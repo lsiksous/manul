@@ -1,0 +1,7 @@
+---
+- name: Controller node post-install
+  hosts: edge
+  become: true
+  roles:
+    - swapfile
+    - mapr_sources

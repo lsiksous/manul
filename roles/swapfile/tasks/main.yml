@@ -1,0 +1,32 @@
+---
+- name: Check if swapfile already exists
+  stat:
+    path: "{{ swapfile_path }}"
+  register: swapfile_stat
+  changed_when: false
+
+- name: Create swapfile
+  block:
+    - name: Create swapfile
+      command: "fallocate -l {{ swapfile_size }} {{ swapfile_path }}"
+      become: true
+      when: not swapfile_stat.stat.exists
+
+    - name: Set permissions for swapfile
+      file:
+        path: "{{ swapfile_path }}"
+        mode: "0600"
+      become: true
+      when: not swapfile_stat.stat.exists
+
+    - name: Make swap
+      command: "mkswap {{ swapfile_path }}"
+      become: true
+      when: not swapfile_stat.stat.exists
+
+    - name: Enable swap
+      command: "swapon {{ swapfile_path }}"
+      become: true
+      when: not swapfile_stat.stat.exists
+  tags:
+    - swapfile
