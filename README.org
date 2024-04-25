@@ -414,8 +414,8 @@ status, and system behavior.
   authentication mechanisms, access controls, encryption, and auditing to ensure
   the confidentiality, integrity, and availability of data. But we'll leave this
   step out for the moment as it is a complex subject and we only need a sandbox
-  for teaching first essential concepts to newbies. Nonetheless, there
-  definitely should be a dedicated course and labs on this one.
+  for teaching essential concepts to newbies. Nonetheless, there definitely
+  should be a dedicated course and labs on this one.
 
 - *Post-Installation Tasks:* After the installation is complete, we may need to
   perform additional tasks such as verifying the installation, testing cluster
