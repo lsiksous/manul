@@ -1,2 +1,12 @@
+---
+# edge/controller env variables
 hpe_user:  "{{ lookup('env', 'HPE_USER') }}"
 hpe_token:  "{{ lookup('env', 'HPE_TOKEN') }}"
+
+# MapR GPG key URL
+mapr_gpg_key_url: "http://{{ hpe_user }}:{{ hpe_token }}@package.mapr.com/releases/pub/maprgpg.key"
+
+# MapR repository URLs
+mapr_repos:
+  - repo: "deb [arch=amd64] https://{{ hpe_user }}:{{ hpe_token }}@package.ezmeral.hpe.com/releases/v6.1.1/ubuntu/ binary bionic"
+  - repo: "deb [arch=amd64] https://{{ hpe_user }}:{{ hpe_token }}@package.ezmeral.hpe.com/releases/MEP/MEP-6.1.1/ubuntu/ binary bionic"

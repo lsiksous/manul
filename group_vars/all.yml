@@ -5,11 +5,3 @@ mapr_group:  "{{ lookup('env', 'MAPR_GROUP') }}"
 mapr_uid: "{{ lookup('env', 'MAPR_UID') }}"
 mapr_gid:  "{{ lookup('env', 'MAPR_GID') }}"
 mapr_password:  "{{ lookup('env', 'MAPR_PASSWD') }}"
-
-# MapR GPG key URL
-mapr_gpg_key_url: "http://package.ezmeral.hpe.com/releases/pub/maprgpg.key"
-
-# MapR repository URLs
-mapr_repos:
-  - repo: "deb [arch=amd64] https://package.ezmeral.hpe.com/releases/v6.1.1/ubuntu/ binary bionic"
-  - repo: "deb [arch=amd64] https://package.ezmeral.hpe.com/releases/MEP/MEP-6.1.1/ubuntu/ binary bionic"
