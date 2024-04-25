@@ -1,6 +1,6 @@
 ---
 - name: Controller node post-install
-  hosts: edge
+  hosts: edges
   vars:
     source_node: node03
   become: true
