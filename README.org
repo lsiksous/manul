@@ -462,7 +462,7 @@ This is a pretty long process, so we made a dedicated documentation for this ste
 
 * Contribution
 
-- [Splendeurs Obami](https://github.com/Ginius)
+- [[https://github.com/Ginius][Splendeurs Obami]] (@Ginius) 
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
   python. Thanks Khoudia !
 
