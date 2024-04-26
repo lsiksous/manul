@@ -404,7 +404,7 @@ cluster that we have provisioned earlier.
 8. Run ansible playbook:
 
    #+begin_src shell
-   ansible-playbook -i inventory.ini mapr-configure.yml
+   ansible-playbook -i inventory.ini 00-mapr_configure.yml
    #+end_src
 
 9. Now you should be able to launch the mapr installer (see [[#configuration][Configuration]] chapter
