@@ -29,8 +29,8 @@ def configure_environment(config)
     config.vm.define "edge" do |node|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "edge"
-        vb.memory = 2048
-        vb.cpus = 2
+        vb.memory = 4096
+        vb.cpus = 4
       end
       node.vm.hostname = "edge"
       node.vm.network "public_network", ip: IP_NTW + "#{CONTROLLER_IP_START + i}", bridge: "#$default_network_interface"
