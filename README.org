@@ -143,6 +143,7 @@ underway to protect its habitat and populations.
 
 *** Software Dependencies
    - Vagrant: Version 2.4.1 for Windows
+   - Git: 2.44 for Windows
 
 *** Virtual Machine Requirements
    - Operating System: Ubuntu 22.04 (VirtualBox Appliance)
@@ -164,9 +165,11 @@ underway to protect its habitat and populations.
      bcdedit /set hypervisorlaunchtype off
      #+end_src
 
+     Restart your machine.
+   
 ** Setup (Layer 1)
 
-- Clone this repository on your workstation:
+- Clone this repository on your workstation in your home directory (e.g. C:\Users\user):
   
      #+BEGIN_SRC shell
      git clone https://github.com/lsiksous/manul.git
@@ -206,7 +209,15 @@ VirtualBox, Hyper-V, VMware, etc.), and any additional configuration scripts.
    vagrant up
    #+end_src
 
+3. Configure ssh:
+   
+   - The vagrant ssh-config command in Vagrant is a utility that outputs OpenSSH
+     valid configuration to connect to the machine via SSH.
+   - We will setup VS Code to connect to our nodes (Filesystem and terminal).
 
+     #+begin_src shell
+     vagrant ssh-config >> ssh-config
+     #+end_src
 
 *** Docker
 
