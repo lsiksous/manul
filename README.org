@@ -337,19 +337,7 @@ cluster that we have provisioned earlier.
    source manul_env.sh
    #+end_src
 
-4. Check ansible version:
-   
-   #+BEGIN_EXAMPLE
-   vagrant@edge:~/manul$ ansible --version
-   ansible 2.5.1   
-     config file = /home/vagrant/manul/ansible.cfg
-     configured module search path = [u'/home/vagrant/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
-     ansible python module location = /usr/lib/python2.7/dist-packages/ansible
-     executable location = /usr/bin/ansible
-     python version = 2.7.17 (default, Mar  8 2023, 18:40:28) [GCC 7.5.0]
-   #+END_EXAMPLE
-
-5. Verify that vagrant configure environment suits to your need:
+4. Verify that vagrant configure environment suits to your need:
 
    #+begin_example
    vagrant@edge:~/manul$ head -10 tools/configure_environment.rb
@@ -363,7 +351,8 @@ cluster that we have provisioned earlier.
 
    Normally, it should be the 3 nodes cluster that this document is based on. If
    you had made changes in the vagrant provisioning step, it will be different.
-6. Generate hosts file:
+   
+5. Generate hosts file:
 
    #+begin_example
    vagrant@edge:~/manul$ tools/generate_hosts_file.sh
@@ -382,7 +371,12 @@ cluster that we have provisioned earlier.
    10.0.1.3 edge.manul.arpa edge
    #+end_example
    
-   Now copy this hosts file to /etc/hosts.
+6. Now copy this hosts file to /etc/hosts.
+
+   #+begin_src shell
+   sudo cp hosts /etc/hosts
+   #+end_src
+
 
 7. Check your inventory
 
@@ -404,6 +398,7 @@ cluster that we have provisioned earlier.
 8. Run ansible playbook:
 
    #+begin_src shell
+   # source manul_env.sh must have been done before running this command
    ansible-playbook -i inventory.ini 00-mapr_configure.yml
    #+end_src
 
@@ -467,6 +462,7 @@ This is a pretty long process, so we made a dedicated documentation for this ste
 
 * Contribution
 
+- [Splendeurs Obami](https://github.com/Ginius)
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
   python. Thanks Khoudia !
 
