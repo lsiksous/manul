@@ -216,7 +216,7 @@ VirtualBox, Hyper-V, VMware, etc.), and any additional configuration scripts.
    - We will setup VS Code to connect to our nodes (Filesystem and terminal).
 
      #+begin_src shell
-     vagrant ssh-config >> ssh-config
+     vagrant ssh-config >> ~/.ssh/config
      #+end_src
 
 *** Docker
