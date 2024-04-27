@@ -1,0 +1,899 @@
+# -*- coding: utf-8 -*-
+
+#+TITLE: Prévision de la production porcine
+#+PROPERTY: header-args:jupyter-python :session *Py* :kernel pigmalion :results raw drawer :cache no :async yes :exports both :eval never-export :pandoc t
+
+#+SUBTITLE: Mon projet chef d'Oeuvre
+#+AUTHOR: Laurent Siksous
+#+EMAIL: siksous@gmail.com
+# #+DATE: 
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  fr
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \usepackage[titles]{tocloft}
+
+#+INCLUDE: "./slidehead.org"
+# #+INCLUDE: "./printhead.org"
+
+* Preamble                                           :noexport:
+** Emacs Setup
+
+#+begin_src emacs-lisp
+(setq org-src-fontify-natively t)
+(setq org-latex-image-default-width "5cm")
+(setq org-image-actual-width nil)
+#+end_src
+
+#+RESULTS:
+
+** Imports
+
+#+begin_src jupyter-python
+%matplotlib inline
+%load_ext autoreload
+%autoreload 2
+
+import sys
+import os
+import warnings
+warnings.filterwarnings("ignore")
+import pickle
+from random import randint
+from datetime import datetime
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import tensorflow as tf
+lPlP# for loading/processing the images  
+from tensorflow.keras.preprocessing.image import load_img 
+from tensorflow.keras.preprocessing.image import img_to_array 
+from tensorflow.keras.applications.vgg16 import preprocess_input 
+
+# models 
+from tensorflow.keras.applications.vgg16 import VGG16 
+from tensorflow.keras.models import Model
+
+# clustering and dimension reduction
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.metrics.pairwise import cosine_similarity
+
+from meteostat import Point, Daily
+#+end_src
+
+#+RESULTS:
+:results:
+: The autoreload extension is already loaded. To reload it, use:
+:   %reload_ext autoreload
+:end:
+
+** Functions
+
+#+begin_src jupyter-python
+# Display all
+def display_all(df):
+    with pd.option_context("display.max_rows", 100, "display.max_columns", 100): 
+        display(df)
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+** Org
+
+#+begin_src jupyter-python
+# Org-mode table formatter
+import IPython
+import tabulate
+
+class OrgFormatter(IPython.core.formatters.BaseFormatter):
+    format_type = IPython.core.formatters.Unicode('text/org')
+    print_method = IPython.core.formatters.ObjectName('_repr_org_')
+
+def pd_dataframe_to_org(df):
+    return tabulate.tabulate(df, headers='keys', tablefmt='orgtbl', showindex='always')
+
+ip = get_ipython()
+ip.display_formatter.formatters['text/org'] = OrgFormatter()
+
+f = ip.display_formatter.formatters['text/org']
+f.for_type_by_name('pandas.core.frame', 'DataFrame', pd_dataframe_to_org)
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+
+#+LATEX: \clearpage
+* Résumé                                                            :article:
+Le présent mémoire présente une étude sur la prévision de la production dans le
+secteur de la viande porcine en France. Les données utilisées proviennent d'un
+organisme, BDPORC qui est chargé par l'état, pour des raisons de tracabilité de
+collecter les mouvements d'animaux avec environ 800 000 à 900 000
+enregistrements par an.
+
+Nous avons développé un pipeline de traitement des données, qui comprend la
+sélection des caractéristiques, la transformation des caractéristiques, et
+l'entraînement des modèles de prévision.
+
+Nous avons comparé la performance de plusieurs modèles de prévision de séries
+temporelles, tels que DeepAR, Prophet, HRHN, N-BEATS, DSTP-RNN, TFT, N-HITS,
+Catboost, XGBoost, LightGBM et Croston, en utilisant la métrique MAPE (Mean
+Absolute Percentage Error).
+
+Les résultats ont montré que Catboost a obtenu la meilleure performance avec une
+MAPE de 3,45%.
+
+* Contexte                                                    :article:slide:
+** Ifip / L'institut du porc
+
+Cette étude a été réalisée au sein de l'IFip
+
+- Institut de recherche et développement    
+- 60 ans d'existence
+- Objectifs :
+  - Améliorer la qualité et la sécurité des produits porcins
+  - Développer des technologies innovantes
+  - Promouvoir la santé et le bien-être des animaux
+  - Améliorer la productivité et la rentabilité des exploitations
+
+- Financement :
+  - Ministère de l'Agriculture
+  - Interprofession INAPORC
+  - Prestations de conseil
+  - Publications
+
+** AOP Porc Grand Ouest
+
+Cette étude était commandée par l AOP Porc Grand Ouest
+
+- Créée en 2021
+- Regroupement de 10 organisations de producteurs soit la moité de la production
+  française
+- Renforcer le pouvoir de marché des éleveurs
+- Cofinancement de projets structurants, notamment pour la modernisation des
+  élevages, le bien-être animal, la décarbonisation...
+
+#+LATEX: \clearpage
+** Prévision de la production porcine à l'horizon de 5 mois
+
+#+CAPTION[Cycle du porc]: Cycle du porc 
+#+attr_latex: :width 300px
+[[./fig/cycle.png]]
+
+- Différence entre le nombre de porcs "à abattre" et le nombre de porcs
+  réellement abattus.
+
+* A propos des données
+** BDPORC  :article:
+
+Nous avons travaillé avec la base de données BDPORC et sur une historique des
+cinq dernières années seulement avec entre 800 000 et 900 000 enregistrements
+par an.
+
+#+CAPTION: Tournée au sens BDPORC
+#+attr_latex: :width 300px
+[[./fig/tour.png]]
+
+#+LATEX: \clearpage
+
+Chaque enregistrement correspond au chargement ou au déchargement de lots
+d'animaux depuis un élevage jusqu'à un site de rassemblement ou un abattoir, par
+exemple.
+
+#+CAPTION: BDPORC
+#+attr_latex: :width 300px
+[[./fig/bdporc.png]]
+
+** BDPORC                                                            :slide:
+*** Col left                                                        :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.35
+   :END:
+   
+#+attr_latex: :width 150px
+[[./fig/tour.png]]
+
+*** Col right                                                       :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.55
+   :END:
+   
+#+attr_latex: :width 150px
+[[./fig/bdporc.png]]
+
+- Historique de 5 ans
+- De 800 à 900 milles enregistrements par an
+
+** Variable à prédire                                        :slide:article:
+
+- La variable à prédire est un proxy calculé à partir des poids de lots
+  d'abattage (source Uniporc)
+
+#+CAPTION[Cible]: Variable à prédire
+#+attr_latex: :width 300px
+[[./fig/weight.png]]
+  
+** Données exogènes                                          :slide:article:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+- Les variables exogènes sont des variables indépendantes du processus d'élevage
+  mais qui peuvent expliquer des variations de nos modèles selon une certaine
+  corrélation/causalité.
+
+ #+CAPTION: variables covariantes et exogènes
+#+attr_latex: :width 300px
+[[./fig/future.png]]
+
+- Nous les utilisons à posteriori pour tenter d'affiner nos prédictions.
+- Certaines sont déjà connues dans le futur : jours fériés, prévisions économiques..
+- Certaines n'opèrent que dans le passé avec un effet constaté décalé dans le
+  temps : influence du climat sur la fertilité des truies, prix de l'aliment...
+
+** Températures
+
+#+begin_src jupyter-python :exports code
+df = pd.DataFrame()
+
+start = datetime(2014, 1, 1)
+end = datetime(2022, 12, 31)
+
+columns = ['north', 'south', 'east', 'west']
+departments = ['35', '22', '29', '56']
+
+points  = pd.read_csv('../../data/external/points-extremes-des-departements-metropolitains-de-france.csv',index_col='Departement')
+points.columns = columns
+points[ 'lat'] = (points.north + points.south)/2
+points[ 'long'] = (points.east + points.west)/2
+
+for d in departments:
+    dep = Point(points.loc[d].lat,points.loc[d].long)
+    data = Daily(dep, start, end)
+    data = data.aggregate('1W')
+    data = data.fetch()
+    data['dep'] = d
+    df = pd.concat([df, data], axis=0)
+
+df
+#+end_src
+
+#+begin_src jupyter-python
+df.plot(y=['tavg', 'tmax', 'tmin'])
+plt.show()
+#+end_src
+
+#+RESULTS:
+:results:
+[[file:./.ob-jupyter/726fe8dd43bd5134b87a8145e67620d3444f8012.png]]
+:end:
+
+#+begin_src jupyter-python
+df.to_csv('../../data/processed/temperatures.csv')
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+** Caractéristiques de séries
+
+Les données de BDPORC représentent des séries temporelles intermittentes si on
+les utilisent à l'échelle de l'élevage. Les séries temporelles intermittentes
+ont comme caractéristiques d'afficher une présence sporadique de valeurs
+effectives entrecoupées de plages vides, c'est à dire des valeurs nulles à
+certains pas de temps correspondant à une absence de transport de porcs à ces
+périodes.
+
+Nous avons travaillé sur des fréquences hebdomadaires. Les fréquences mensuelles
+avait pourtant l'avantage de gommer l'intermittence des séries mais de réduire
+considérablement le nombre d'échantillons.
+
+Nous avons également alimenté nos modèles avec des séries regroupées par
+organisation de producteurs et pour toute l AOP.
+
+
+** Caractéristiques des séries                                       :slide:
+
+- Comptage
+  - valeurs entiéres discrètes
+
+- Intermitence
+  - présence sporadique de ces valeurs
+  - le zéro est une valeur admissible
+
+- Fréquence
+  - hebdomadaire ou mensuelle
+    
+* Armoçage du projet
+
+** Amorçage du projet                                                :article:
+
+Le projet PreviProd a été signé par l'Ifip auprès de l'AOP Porc Grand Ouest
+en 2021. Un modèle statistique classique (MODEMO) a été mis au point mais
+celui-ci s'est révélé inefficace à prédire les nouvelles données.
+
+Nous avons pris la décision d'investir mon contrat de professionalisation sur
+l'exploration des méthodes de machine Learning pour ce problème.
+
+La réunion de lancement s'est tenu en mai 2022.
+
+** Amorçage du projet                                                :slide:
+
+- Projet signé en 2021
+- Modèle statistique classique (MODEMO) inefficace à prédire les phénomènes plus
+  récents
+- Retard de démarrage (Kickoff mai 2022)
+- Décision d'investir mon contrat de pro sur des méthodes SOTA (Deep Learning) +
+  projets annexes
+  
+** Epics                                                             :slide:article:
+
+#+CAPTION[Epics]: Epics work items
+#+attr_latex: :width 200px
+[[./fig/epics.png]]
+
+
+** Artefacts                                                         :article:
+
+
+Nous avons utilisé plusieurs artefacts au sens de la méthodologie agile pour
+gérer le projet, dont une board "Product Backlog" qui contenait tous les Work
+Items identifiés, ainsi qu'une "Sprint board" qui rassemblait toutes les tâches
+assignées à ce sprint. Nous avons également généré des rapports d'analyse, tels
+que le Cumulative Flow Diagram et le Velocity report, pour suivre l'avancement
+de notre travail.
+
+
+** Artefacts                                                         :slide:
+
+- Une board *Product Backlog* contenant tous les Work Items identifiés.
+- Une *Sprint board* contenant toutes les tâches assignées à ce sprint.
+- *Analytics* : Cumulative Flow Diagram, Velocity report
+
+** Outils                                                            :article:
+
+
+- Outil de visualisation : nous avons utilisé Azure DevOps Analytics. Cet outil
+  nous a permis de générer des rapports sur l'avancement de notre projet, ainsi
+  que de suivre l'évolution de nos indicateurs de performance.
+
+- Planification des tâches : Nous avons utilisé Azure DevOps Boards pour
+  planifier les tâches et suivre leur avancement. Cet outil nous a permis de
+  créer des tâches, de les assigner aux membres de l'équipe, et de suivre leur
+  progression tout au long du projet.
+
+- Gestion du code : Pour la gestion de notre code, nous avons utilisé Azure
+  DevOps Repos. Cet outil nous a permis de stocker notre code source, de le
+  versionner, de le partager avec les membres de l'équipe et de le gérer en
+  toute sécurité.
+
+- Planification et tenue des rituels : Enfin, pour la planification et la tenue
+  de nos rituels, nous avons utilisé Teams. Cet outil de communication et de
+  collaboration nous a permis de programmer et de tenir nos réunions de
+  planification, de revue de sprint, et de rétrospective.
+
+** Outils                                                            :slide:
+
+- Visualisation : *Azure DevOps* Analytics
+- Planification des tâches : *Azure DevOps* Boards 
+- Gestion du code : *Azure DevOps* Repos
+- Planification et tenue des rituels : *Teams*
+
+** Rituels  :article:
+
+- Revue mensuelle : Nous organisions une revue mensuelle d'une heure avec toutes
+  les parties prenantes pour présenter les réalisations des sprints et
+  recueillir les commentaires des utilisateurs afin de nous assurer que nous
+  sommes sur la bonne voie pour atteindre nos objectifs.
+
+- Planification de sprint : Chaque vendredi, moi et ma tutelle nous réunissions
+  pendant 30 minutes pour planifier le prochain sprint. Au cours de cette
+  réunion, nous définissions le goal de livraison et la sprint backlog pour le
+  prochain sprint. Cette planification devait nous assurer que nous avions une
+  vision claire de ce que nous voulions accomplir dans le sprint à venir et que
+  nous avons les ressources nécessaires pour y parvenir.
+  
+
+** Rituels️                                                           :slide:
+  
+- *Monthly review* (1h) / Toutes les parties prenantes chaque mois.
+  
+  --> Présenter les accomplissements des sprints et recueillir le feedback le plus
+  large possible auprès des utilisateurs.
+    
+- *Sprint planning* (30mn) / Laurent et Bérengère chaque vendredi.
+  
+  --> Création du goal de livraison et de la sprint backlog.
+
+  
+** Arborescence                                                      :slide:article:
+
+#+attr_latex: :width 75px
+[[./fig/tree.png]]
+
+** Azure Devops                                               :slide:article:
+
+#+attr_latex: :width 300px
+[[./fig/flow.png]]
+
+** Planning                                                          :slide:article:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+#+attr_latex: :width 300px
+[[./fig/retro_1.png]]
+
+#+attr_latex: :width 300px
+[[./fig/retro_2.png]]
+
+#+attr_latex: :width 300px
+[[./fig/retro_3.png]]
+
+
+** Difficultés rencontrées                                           :article:
+
+Nous avons rencontré des difficultés suite aux départs de certains membres de
+l'Ifip (ma tutelle d'alternance et le responsable de département qui avait
+initié le projet). Nous avons dû nous adapter à ces changements en réorganisant
+mon travail.
+
+Nous avons rencontré des retards importants dans la mise à disposition de
+certaines données, ce qui a ralenti mon travail. En particulier, l'anonymisation
+des données relatives aux élevages a nécessité un traitement plus long que
+prévu.
+
+Nous avons également fait face à la défection de trois sources de données : les
+inséminations, les poids de lots d'abattage et l'historique des annonces de
+porcs à abattre pour une OP pilote. Cette situation a nécessité de trouver des
+alternatives pour ces sources de données et de revoir nos modèles en fonction
+des données restantes.
+
+** Difficultés rencontrées                                           :slide:
+
+- Départs de l'Ifip
+  - tutelle de l'alternance
+  - responsable de département initiateur du projet
+- Nombreux retards de mise à disposition des données
+  - anonymisation des élevages
+- Défection de 3 sources de données
+  - inséminations
+  - poids de lots d'abattage
+  - historique des annonces de porcs à abattre pour une OP pilote
+  
+* Méthodologie
+** Méthodologie                                                      :slide:
+
+- Revue de littérature narrative (E3)
+- Enquêtes métier
+- Prototypage sur des données similaires (Dirty Bootstrap)
+- Communication
+- Problem solving
+
+** Analyse exploratoire des données                                  :slide:
+
+#+CAPTION[EDA]: The Data
+#+attr_latex: :width 280px
+[[./fig/messy.jpeg]]
+
+** Classification automatique de séries temporelles          :article:slide:
+:PROPERTIES:
+:BEAMER_OPT: allowframebreaks
+:END:
+
+- Pour diverses applications, il est utile de pouvoir classer des séries
+  temporelles [[cite:&chen20_time_series_clust_class]]
+
+- Par exemple, si on veut les séparer en groupes afin de pouvoir créer des
+  modèles prédictifs ciblés.
+
+- Dans le cas qui nous occupe, nous voulions regrouper les élevages selon leur
+  affectation en terme de fonctionnement : Naisseur, Naisseur-Sevreur,
+  Naisseur-Engraisseur, Post-sevreur Engraisseur, Sevreur-Engraisseur.
+
+- Apprentissage augmenté par la recherche de similarités dans les
+  représentations graphiques des séries temporelles.  
+
+#+CAPTION[Classification]: Classification automatique des élevages
+#+attr_latex: :width 300px
+[[./fig/classification.png]]
+
+** Détection des anomalies :slide:article:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks, labels=
+:END:
+
+- Detecter le changement d'affectation de l'élevage, une cessation d'activité,
+  etc..
+- Dans la phase d'apprentissage, découper les séries temporelles selon
+  l'affectation de l'élevage.
+  
+
+#+attr_latex: :width 270px
+[[./fig/ts_anom.png]]
+
+#+attr_latex: :width 300px
+[[./fig/T.png]]
+
+--> Synthèse des anomalies
+
+
+** Transformation des caractéristiques pour l'entraînement  :article:
+
+La transformation des caractéristiques pour l'entraînement est une étape
+cruciale pour améliorer la qualité des prévisions de modèles de machine
+learning. Parmi les techniques de transformation les plus courantes pour des
+séries temporelles, on trouve :
+
+- Lagged features : en utilisant les valeurs passées de la série temporelle, on
+  peut créer de nouvelles variables en décalant les données d'un ou plusieurs
+  pas de temps. Ces variables peuvent aider à capturer les tendances et les
+  motifs saisonniers.
+- Statistical features : les caractéristiques statistiques telles que la
+  moyenne, l'écart type, le minimum, le maximum, etc. peuvent fournir des
+  informations supplémentaires sur la série temporelle et améliorer les
+  performances des modèles.
+- EWM (Exponential Weighted Moving Average) : une technique de lissage de la
+  série temporelle qui donne plus de poids aux données plus récentes. Cette
+  technique peut aider à réduire le bruit dans la série temporelle et à mieux
+  capturer les tendances.
+- Categorical features : les variables catégorielles telles que le mois, les
+  jours de travail, etc. peuvent fournir des informations importantes sur les
+  tendances saisonnières et autres motifs.
+
+En utilisant une combinaison de ces techniques, on peut créer un ensemble de
+caractéristiques qui permettent de capturer les différentes dimensions de la
+série temporelle et d'améliorer les performances des modèles de prévision.
+
+** Transformation des caractéristiques pour l'entraînement           :slide:
+
+- lagged features
+- statistical features (mean, std ...)
+- categorical features (month, working days...)
+
+** Sélection des caractéristiques
+
+- Importance de Gini
+- Méthode par permutations
+- RFECV
+- Predictive Power Score
+- VSURF
+- 
+** Sélection des caractéristiques                                    :article:
+
+Nous avons implémenté et testé sur nos données plusieurs méthode de sélection
+des caractéristiques dont:
+
+- L'importance de Gini : c'est une mesure de l'importance des caractéristiques
+  dans les arbres de décision. Elle est calculée lors de la construction de
+  chaque arbre et peut être utilisée pour sélectionner les caractéristiques les
+  plus importantes.
+
+- Les méthodes par permutations : ces méthodes consistent à permuter
+  aléatoirement les valeurs d'une caractéristique et à mesurer l'impact sur la
+  performance du modèle. Cela permet de mesurer l'importance des
+  caractéristiques et de sélectionner les plus importantes.
+
+- RFECV (Recursive Feature Elimination) : il s'agit d'une méthode de sélection
+  de caractéristiques qui consiste à éliminer récursivement les caractéristiques
+  les moins importantes jusqu'à ce qu'un ensemble optimal de caractéristiques
+  soit atteint. Cela permet de réduire la dimensionnalité du problème et
+  d'améliorer la performance du modèle.
+
+- Predictive power score : il s'agit d'une méthode de sélection de
+  caractéristiques qui consiste à mesurer la corrélation entre les
+  caractéristiques et la variable cible. Les caractéristiques ayant une forte
+  corrélation avec la variable cible sont considérées comme les plus
+  importantes.
+
+- VSURF : il s'agit d'une méthode de sélection de caractéristiques qui combine
+  les méthodes par permutations et RFECV pour sélectionner les caractéristiques
+  les plus importantes. Cette méthode est basée sur une analyse de la variance
+  et est particulièrement utile pour les ensembles de données à haute dimensionnalité.
+
+* Choix et mise en oeuvre des modèles                                
+** Méthodes statistiques dites "classiques" :article:slide:
+
+  - ARIMA
+  - Exponential Smoothing
+  - Croston Method
+
+** Boosting  :article:slide:
+  - Random Forests
+  - XGBoost
+  - catboost
+  - LightGBM
+
+
+
+  
+#+LATEX: \clearpage
+** Réseaux de neurones  :article:slide:
+
+- DeepAR (2017) : Autoregressive Recurrent Network (Amazon) [[cite:&salinasDeepARProbabilisticForecasting2019]]
+- Prophet (2017) : Automatic Forecasting Procedure (Facebook) [[cite:&taylorForecastingScale2017]]
+- HRHN (2018) : Hierarchical Recurrent Highway Network [[cite:&taoHierarchicalAttentionBasedRecurrent2018]]
+- N-BEATS (2019) : Neural Basis Expansion Analysis for interpretable Time Series [[cite:&oreshkinNBEATSNeuralBasis2020]]
+- DSTP-RNN (2020) : Dual-Stage Two-Phase attention-based Recurrent Neural
+  Network [[cite:&liuDSTPRNNDualstageTwophase2019]]
+- TFT (2020) : Temporal Fusion Transformer (Google) [[cite:&limTemporalFusionTransformers2020]]
+- N-HITS (2022) : Neural Hierarchical Interpolation for Time Series
+  [[cite:&challuNHiTSNeuralHierarchical2022]]
+  
+** Graph Neural networks :article:slide:
+:PROPERTIES:
+:BEAMER_opt: shrink=10
+:END:
+En raison du retard de démarrage du projet et de la fourniture tardive des
+données, nous avons été contraints de renoncer à inclure l'étude des graphes
+neural network dans notre travail.
+
+|-----------+-----------|
+| DCRNN     | GRU       |
+| GConvGRU  | GRU       |
+| GConvLSTM | LSTM      |
+| GC-LSTM   | LSTM      |
+| DyGrAE    | LSTM      |
+| LRGCN     | LSTM      |
+| EGCN-H    | GRU       |
+| EGCN-O    | LSTM      |
+| T-GCN     | GRU       |
+| A3T-GCN   | GRU       |
+| AGCRN     | GRU       |
+| MPNN LSTM | LSTM      |
+| STGCN     | Attention |
+| ASTGCN    | Attention |
+| MSTGCN    | Attention |
+| GMAN      | Attention |
+| MTGNN     | Attention |
+| AAGCN     | Attention |
+|-----------+-----------|
+
+** Outils                                                           :article:
+
+Nous avons utilisé différentes librairies pour notre travail, notamment la
+librairie Darts qui contenait déjà de nombreux modèles que nous avions décidé
+d'implémenter. Nous avons également utilisé TensorFlow et PyTorch Forecasting
+pour d'autres.
+
+** Outils                                                           :slide:
+
+- Statsmodels
+- Darts
+- Tensorflow
+- Pytorch Forecasting
+- Pytorch Geometric Temporal
+
+** Optimisation des hyper-paramètres                                :article:
+
+Pour structurer notre projet de machine learning, nous avons utilisé Kedro. Grâce
+à cette bibliothèque, nous avons pu définir des pipelines de données pour les
+différentes étapes du traitement, de la modélisation et de la validation de
+notre modèle. Cela nous a permis de séparer les différentes étapes de manière
+claire et de faciliter la collaboration entre les membres de l'équipe.
+
+#+CAPTION: Pipeline kedro
+#+attr_latex: :width 300px
+[[./fig/pipe.png]]
+
+
+Pour optimiser les hyperparamètres de notre modèle, nous avons utilisé
+Optuna. Nous avons choisi cette bibliothèque car elle est mature et facile à
+mettre en oeuvre. L'algorithme utilisé par Optuna est Tree-structured Parzen
+Estimator. L'algorithme utilise un arbre pour diviser l'espace des
+hyperparamètres en régions plus petites, ce qui permet de réduire le nombre
+d'essais nécessaires pour trouver les meilleurs hyperparamètres.
+
+Pour stocker et gérer les runs d'entraînement et d'optimisation des
+hyperparamètres, nous avons utilisé MLflow. Grâce à cette plateforme, nous
+avons pu stocker les hyperparamètres, les métriques, les visualisations, ainsi
+que les modèles et les ensembles de données associés à chaque run. Cela nous a
+permis de facilement comparer les différents runs, d'analyser les résultats et
+de partager les informations avec l'équipe.
+
+** Optimisation des hyper-paramètres                                :slide:
+
+- Ray tune (abandonné)
+- Choix de Optuna : maturité, simplicité de mise en oeuvre
+  - Tree-structured Parzen Estimator algorithm
+  - bonne intégration avec wandb/mlflow
+- Weights & Biases (abandonné pour pb de licence)
+  - archivage des runs (HPO + Training)
+- MLFlow/Kedro
+  - fully open source
+
+** Entraînement(s) des modèles                                       :slide:
+
+- 1 modèle spécifique au type d'élevage par élevage routinier
+- Pour les élevages récemment convertis à tel ou tel type d'élevage, le modèle
+  qui lui sera affecté est celui qui obtient en moyenne le minimum d'erreur sur
+  les élevages routiniers
+- Les élevages en mutation dont il n'est pas possible de déterminer le type
+  seront soumis à expertise et le cas échéant feront partie du degré
+  d'incertitude.
+- Finalement, les estimations par élevage sont agrégées pour fournir des
+  prévisions globales pour tout l'AOP 
+
+** Évaluation                                                         :slide:
+
+- La performance du modèle est évaluée en erreur moyenne absolue en pourcentage.
+- D'après la maquette réalisée sur un sous-échantillon, nous nous
+  sommes fixé un objectif de 5% maximum d'erreur.
+- Chaque nouveau mois, la courbe des prévisions du mois précédent est actualisée
+  en tenant compte des reports de notification.
+
+* Résultats
+
+** Résultats  :article:slide:
+
+#+CAPTION: Tableau des performances
+|----------+--------|
+| Modèle   |   MAPE |
+|----------+--------|
+| Catboost |  3.45% |
+| LightGBM |  7.12% |
+| Prophet  |  8.36% |
+| HRHN     |  8.45% |
+| N-HITS   |  8.53% |
+| DSTP-RNN |  8.60% |
+| XGBoost  |  9.25% |
+| N-BEATS  |  9.89% |
+| TFT      | 10.14% |
+| Croston  | 15.37% |
+|----------+--------|
+
+** Choix de CatBoost  :article:
+
+Nous avons démontré que CatBoost fonctionne bien sur une variété de tâches de
+prévision de séries temporelles, y compris la prédiction de production (supply
+chain) mais aussi dans de nombreux cas, il a obtenu des résultats de pointe sur
+des ensembles de données de référence.
+
+L'un des principaux avantages de l'utilisation de CatBoost pour les prévisions
+de séries chronologiques est qu'il peut gérer des variables catégorielles prêtes
+à l'emploi. Ceci est particulièrement utile dans les données de séries où des
+variables catégorielles telles que la saison ou le jour de la semaine sont
+souvent rencontrées.
+
+De plus, CatBoost est capable de gérer automatiquement les valeurs manquantes,
+qui peuvent être courantes comme dans le cas des séries intermittentes.
+
+* Livrables applicatifs
+** Application Web                                                   :slide:article:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks, labels=
+:END:
+
+- Chargement des fichiers BDPorc
+- Lancement du pipeline de prédiction
+- Affichage des courbes et métriques de prévisions
+- Génération du tableau de bord pourl'AOP
+
+#+CAPTION[Web app]: Application ChronoPorc
+#+attr_latex: :width 300px
+[[./fig/webapp.png]]
+
+** API                                                               :article:slide:
+
+Cette fonctionnalité a été finalement abandonnée car non nécessaire ni en
+interne, ni au client.
+  
+#+LATEX: \clearpage
+* Architecture de production
+** Architecture de production                                :article:
+
+Dans sa première version, l'architecture de production du modèle Catboost devait
+utiliser un grand nombre de services dans le cloud comme Azure Blob Storage,
+Postgresql, Une machine virtuelle pour l'entrainement, un container pour la
+préparation des données, un container pour l'application Streamlit de chargement
+des données et pour l'exécution automatique du pipeline Kedro.
+
+#+CAPTION: Architecture de production
+#+attr_latex: :width 280px
+[[./fig/archi_prod_v3.png]]
+
+Le coût computationnel de Catboost étant relativement modeste. Nous avons choisi
+de réduire l'architecture de production à seulement un container et un blob
+storage. Les prédictions de seront pas stockées non plus dans une base de
+données relationnelle par manque de temps à la fin du projet.
+
+** Architecture de production                                :slide:
+
+#+CAPTION[Architecture]: Architecture de production
+#+attr_latex: :width 280px
+[[./fig/archi_prod_v3.png]]
+
+#+LATEX: \clearpage
+
+** Base de données                                                   :article:
+
+Le stockage des prédictions sera peut-être implémenté dans une future
+version. En attendant l'historique des pr2dictions est stocké dans un simple
+fichier csv.
+
+#+CAPTION[MCD]: Model conceptuel de données
+#+attr_latex: :width 300px
+[[./fig/mcd_previprod.png]]
+
+** Base de données                                                   :slide:
+
+#+CAPTION: Modèle conceptuel de données
+#+attr_latex: :width 300px
+[[./fig/mcd_previprod.png]]
+
+
+#+latex: \clearpage
+
+#+LATEX: \clearpage
+
+* Tests
+** Tests d'intégrité des données   :article:
+
+Nous avons utilisé Great Expectations pour valider et documenter les données
+reçues. Nous avons défini des règles de validation pour chaque colonne de nos
+données, et nous avons exécuté ces règles à chaque chargement de données pour
+nous assurer de la conformité des données. Nous avons également utilisé Great
+Expectations pour générer des documentations automatiques des  données à chaque
+étape de transformation, ce qui a permis de faciliter la compréhension et la
+communication des données avec l'équipe.
+
+** Tests unitaires  :article
+
+Nous avons également développé des tests pour chaque fonction du pipeline en
+utilisant la bibliothèque de tests pytest. Les tests ont été conçus pour
+s'assurer que chaque fonction répondait aux exigences de l'analyse, en vérifiant
+notamment que les entrées et les sorties étaient correctes et que les valeurs
+étaient dans les plages attendues. Les tests ont été automatisés pour être
+exécutés régulièrement et intégrés au pipeline de développement pour s'assurer
+que les modifications apportées ne compromettaient pas la qualité de l'analyse.
+
+* Conclusion                                                      
+** Conclusion                                                 :article:slide:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks, labels=
+:END:
+
+En conclusion, ce projet de prédiction de la production porcine a permis
+d'explorer différentes méthodes de prévision telles que les modèles de séries
+temporelles classiques et les approches de Deep Learning.
+
+Le modèle final a atteint une précision très satisfaisante, avec une MAPE de
+3,45% pour l'algorithme CatBoost.
+
+Le projet a également mis en évidence l'importance de la qualité des données,
+qui ont été recueillies sur une période de cinq ans et ont permis de former et
+de valider les différents modèles. En outre, le projet a souligné l'importance
+de l'adaptation des modèles à un domaine spécifique et l'importance de la
+sélection de caractéristiques pour améliorer les performances de prévision.
+
+Enfin, ce projet a permis de mettre en pratique les connaissances acquises en
+matière de machine learning et de séries temporelles, ainsi que d'approfondir la
+compréhension des particularités de l'industrie de la viande porcine. Les
+résultats obtenus peuvent être utilisés pour améliorer la planification de la
+production par les organisations de production, ce qui peut avoir un impact
+positif sur la rentabilité.
+
+** Références                                                 :slide:article:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks, labels=
+:END:
+
+#+LATEX: \listoffigures
+
+bibliographystyle:unsrt
+bibliography:./references.bib
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# eval: (setenv "PATH" "/Library/TeX/texbin/:$PATH" t)
+# eval: (setq org-latex-toc-command "\\tableofcontents \\clearpage")
+# after-save-hook: (lambda nil (ox-ipynb-export-org-file-to-ipynb-file (buffer-name)))
+# End:

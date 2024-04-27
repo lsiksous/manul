@@ -19,17 +19,34 @@
   command: systemctl status mapr-posix-client-basic.service
   register: service_status
 
-- name: Show NFS exports from node01
-  command: showmount -e node01
+- name: Print registered output
+  debug:
+    var: service_status
+  
+- name: Show NFS exports from  "{{ mapr_nfs_host }}"
+  command: showmount -e  "{{ mapr_nfs_host }}"
   register: nfs_exports
 
-- name: Mount NFS share from node01
+- name: Print registered output
+  debug:
+    var: nfs_exports
+  
+- name: Create MapR NFS directory
+  become: yes
+  become_user: root
+  become_method: sudo
+  file:
+    path: "{{ mapr_nfs_directory }}"
+    state: directory
+    mode: '0755'
+
+- name: Mount NFS share from "{{ mapr_nfs_host }}"
   become: yes
   become_user: root
   become_method: sudo
   mount:
     name: /mapr_nfs
-    src: "node01:/mapr"
+    src: "{{ mapr_nfs_host }}:/mapr"
     fstype: nfs
     state: mounted
 

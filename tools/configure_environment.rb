@@ -25,6 +25,12 @@ def configure_environment(config)
       node.vm.disk :disk, size: "20GB", name: "disk2"
       node.vm.hostname = "node0#{i}"
       node.vm.network "public_network", ip: IP_NTW + "#{NODE_IP_START + i}", bridge: "#$default_network_interface"
+      node.vm.network "forwarded_port", guest: 3000, host: 3000, auto_correct: true
+      node.vm.network "forwarded_port", guest: 8047, host: 8047, auto_correct: true
+      node.vm.network "forwarded_port", guest: 8888, host: 8888, auto_correct: true
+      node.vm.network "forwarded_port", guest: 11443, host: 11443, auto_correct: true
+      node.vm.network "forwarded_port", guest: 5601, host: 5601, auto_correct: true
+      node.vm.network "forwarded_port", guest: 8443, host: 8443, auto_correct: true
     end
   end
 
@@ -37,6 +43,7 @@ def configure_environment(config)
       end
       node.vm.hostname = "edge"
       node.vm.network "public_network", ip: IP_NTW + "#{CONTROLLER_IP_START + i}", bridge: "#$default_network_interface"
+      node.vm.network "forwarded_port", guest: 9443, host: 9443, auto_correct: true
     end
   end
 end

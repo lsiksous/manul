@@ -1,0 +1,45 @@
+# specifying the beamer startup gives access to a number of
+# keybindings which make configuring individual slides and components
+# of slides easier.  See, for instance, C-c C-b on a frame headline.
+#+STARTUP: beamer
+
+#+STARTUP: oddeven
+
+# we tell the exporter to use a specific LaTeX document class, as
+# defined in org-latex-classes.  By default, this does not include a
+# beamer entry so this needs to be defined in your configuration (see
+# the tutorial).
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger] 
+
+#+LATEX_HEADER: \usepackage{listings}
+
+#+LATEX_HEADER: \definecolor{UBCblue}{rgb}{0.04706, 0.13725, 0.26667} % UBC Blue (primary)
+#+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
+
+# Beamer supports alternate themes.  Choose your favourite here
+#+BEAMER_COLOR_THEME: dolphin
+#+BEAMER_FONT_THEME:  default
+#+BEAMER_INNER_THEME: [shadow]rounded
+#+BEAMER_OUTER_THEME: infolines
+
+# the beamer exporter expects to be told which level of headlines
+# defines the frames.  We use the first level headlines for sections
+# and the second (hence H:2) for frames.
+#+OPTIONS: ^:nil H:2 toc:t  tags:nil
+
+# the following allow us to selectively choose headlines to export or not
+#+SELECT_TAGS: slide
+#+EXCLUDE_TAGS: noexport
+
+# for a column view of options and configurations for the individual
+# frames
+#+COLUMNS: %20ITEM %13BEAMER_env(Env) %6BEAMER_envargs(Args) %4BEAMER_col(Col) %7BEAMER_extra(Extra)
+
+# #+BEAMER_HEADER: \usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight,opacity=.01]{img/bg2.jpeg}}
+# #+BEAMER_HEADER: \logo{\includegraphics[height=.5cm,keepaspectratio]{img/bti_logo2.png}\vspace{240pt}}
+# #+BEAMER_HEADER: \setbeamertemplate{background canvas}{\begin{tikzpicture}\node[opacity=.1]{\includegraphics [width=\paperwidth,height=\paperheight]{img/background.jpg}};\end{tikzpicture}}
+# #+BEAMER_HEADER: \logo{\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/background.jpg}}
+#+BEAMER_HEADER: \titlegraphic{\includegraphics[width=50]{./fig/ifip.jpg}}
+# #+BEAMER_HEADER: \definecolor{ft}{RGB}{255, 241, 229}
+# #+BEAMER_HEADER: \setbeamercolor{background canvas}{bg=ft}

@@ -1,0 +1,20 @@
+#+STARTUP: beamer
+#+LaTeX_CLASS: tuftebook
+#+LaTeX_CLASS_OPTIONS: [a4paper,twoside,11pt]
+
+#+LATEX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \usemintedstyle{xcode}
+#+LaTeX_HEADER: \newminted{common-lisp}{fontsize=\footnotesize}
+
+# the beamer exporter expects to be told which level of headlines
+# defines the frames.  We use the first level headlines for sections
+# and the second (hence H:2) for frames.
+#+OPTIONS: ^:nil H:2 toc:1 tags:nil
+
+# the following allow us to selectively choose headlines to export or not
+#+SELECT_TAGS: article
+
+# for a column view of options and configurations for the individual
+# frames
+#+COLUMNS: %20ITEM %13BEAMER_env(Env) %6BEAMER_envargs(Args) %4BEAMER_col(Col) %7BEAMER_extra(Extra)

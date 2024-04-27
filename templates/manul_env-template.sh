@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export CLUSTER_NAME=manul.arpa
+export MAPR_RELEASE=6.1.1
+export MAPR_MEP_RELEASE=6.4.0
 
 # MapR distribution env variables
 export HPE_USER=<HPE_USER>
@@ -14,7 +16,7 @@ export MAPR_UID=5000
 
 # Hive user
 export HIVE_USER=hive
-export HIV_PASSWD=hive
+export HIVE_PASSWD=hive
 
 # OSS distribution env variables
 export HADOOP_USER=hadoop
