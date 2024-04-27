@@ -36,10 +36,16 @@ underway to protect its habitat and populations.
 :CONTENTS:
 - [[#introduction][Introduction]]
   - [[#project-overview][Project Overview]]
-    - [[#file-naming-guidelines][File Naming Guidelines]]
     - [[#toolbox-features][Toolbox Features]]
     - [[#benefits][Benefits]]
     - [[#future-enhancements][Future Enhancements]]
+  - [[#file-naming-guidelines][File Naming Guidelines]]
+    - [[#be-descriptive][Be Descriptive]]
+    - [[#use-keywords][Use Keywords]]
+    - [[#be-consistent][Be Consistent]]
+    - [[#keep-it-concise][Keep it Concise]]
+    - [[#use-camelcase-snake_case-or-kebab-case][Use CamelCase, snakecase, or kebab-case]]
+    - [[#include-version-numbers-or-dates-if-applicable][Include Version Numbers or Dates (if applicable)]]
 - [[#installation][Installation]]
   - [[#requirements][Requirements]]
     - [[#development-environment][Development Environment]]
@@ -75,35 +81,6 @@ underway to protect its habitat and populations.
    techniques.
 
    [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's cognitive stages of development]]
-
-*** File Naming Guidelines
-
-When you name a new file, think about the query you would type in the future to find it back.
-
-**** Be Descriptive
-   - Choose names that clearly indicate the content or purpose of the file. Avoid generic or ambiguous names.
-
-**** Use Keywords
-   - Include relevant keywords in the filename that you would likely use when searching for it in the future.
-
-**** Be Consistent
-   - Follow a consistent naming convention across your files and projects to make it easier to navigate and understand.
-
-**** Keep it Concise
-   - While being descriptive, strive to keep the filename concise and avoid unnecessary verbosity.
-
-**** Use CamelCase, snake_case, or kebab-case
-   - Choose a naming convention that suits your preference and maintain consistency within your project.
-
-**** Include Version Numbers or Dates (if applicable)
-   - If the file represents a specific version or is related to a particular date, consider including this information in the filename.
-
-***** Avoid Special Characters
-   - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
-
-***** Use File Extensions Appropriately
-   - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
-
    
 *** Toolbox Features
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
@@ -156,6 +133,34 @@ When you name a new file, think about the query you would type in the future to 
 
      [[file:media/archi.png]]
      
+** File Naming Guidelines
+
+When you name a new file, think about the query you would type in the future to find it back.
+
+**** Be Descriptive
+   - Choose names that clearly indicate the content or purpose of the file. Avoid generic or ambiguous names.
+
+**** Use Keywords
+   - Include relevant keywords in the filename that you would likely use when searching for it in the future.
+
+**** Be Consistent
+   - Follow a consistent naming convention across your files and projects to make it easier to navigate and understand.
+
+**** Keep it Concise
+   - While being descriptive, strive to keep the filename concise and avoid unnecessary verbosity.
+
+**** Use CamelCase, snake_case, or kebab-case
+   - Choose a naming convention that suits your preference and maintain consistency within your project.
+
+**** Include Version Numbers or Dates (if applicable)
+   - If the file represents a specific version or is related to a particular date, consider including this information in the filename.
+
+***** Avoid Special Characters
+   - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
+
+***** Use File Extensions Appropriately
+   - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
+
 
 * Installation
 ** Requirements
