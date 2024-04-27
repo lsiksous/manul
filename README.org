@@ -36,9 +36,18 @@ underway to protect its habitat and populations.
 :CONTENTS:
 - [[#introduction][Introduction]]
   - [[#project-overview][Project Overview]]
-  - [[#toolbox-features][Toolbox Features]]
-  - [[#benefits][Benefits]]
-  - [[#future-enhancements][Future Enhancements]]
+    - [[#file-naming-guidelines][File Naming Guidelines]]
+    - [[#be-descriptive][Be Descriptive]]
+    - [[#use-keywords][Use Keywords]]
+    - [[#be-consistent][Be Consistent]]
+    - [[#keep-it-concise][Keep it Concise]]
+    - [[#use-camelcase-snake_case-or-kebab-case][Use CamelCase, snakecase, or kebab-case]]
+    - [[#include-version-numbers-or-dates-if-applicable][Include Version Numbers or Dates (if applicable)]]
+    - [[#avoid-special-characters][Avoid Special Characters]]
+    - [[#use-file-extensions-appropriately][Use File Extensions Appropriately]]
+    - [[#toolbox-features][Toolbox Features]]
+    - [[#benefits][Benefits]]
+    - [[#future-enhancements][Future Enhancements]]
 - [[#installation][Installation]]
   - [[#requirements][Requirements]]
     - [[#development-environment][Development Environment]]
@@ -73,10 +82,38 @@ underway to protect its habitat and populations.
    students to explore different deployment and configuration management
    techniques.
 
-   [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's stages of development]]
+   [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's cognitive stages of development]]
+
+*** File Naming Guidelines
+
+When you name a new file, think about the query you would type in the future to find it back.
+
+*** Be Descriptive
+   - Choose names that clearly indicate the content or purpose of the file. Avoid generic or ambiguous names.
+
+*** Use Keywords
+   - Include relevant keywords in the filename that you would likely use when searching for it in the future.
+
+*** Be Consistent
+   - Follow a consistent naming convention across your files and projects to make it easier to navigate and understand.
+
+*** Keep it Concise
+   - While being descriptive, strive to keep the filename concise and avoid unnecessary verbosity.
+
+*** Use CamelCase, snake_case, or kebab-case
+   - Choose a naming convention that suits your preference and maintain consistency within your project.
+
+*** Include Version Numbers or Dates (if applicable)
+   - If the file represents a specific version or is related to a particular date, consider including this information in the filename.
+
+*** Avoid Special Characters
+   - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
+
+*** Use File Extensions Appropriately
+   - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
 
    
-** Toolbox Features
+*** Toolbox Features
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
      Hadoop distributions: OSS, Cloudera, and MapR. This variety allows students
      to gain exposure to different Hadoop platforms and understand their unique
@@ -99,7 +136,7 @@ underway to protect its habitat and populations.
      experience in deploying and managing Hadoop clusters using
      industry-standard tools like Docker, Vagrant, Terraform, and Ansible.
 
-** Benefits
+*** Benefits
    - *Hands-on Learning:* By providing easy access to deployable Hadoop
      environments, our project enhances the hands-on learning experience for
      students, allowing them to apply theoretical concepts in real-world
@@ -120,7 +157,7 @@ underway to protect its habitat and populations.
      industry.
 
 
-** Future Enhancements
+*** Future Enhancements
    - *Enhanced Automation:* Continuously improving our automation capabilities, we
      aim to streamline the deployment and management processes further, reducing
      setup time and effort for students and instructors alike.
@@ -172,7 +209,9 @@ underway to protect its habitat and populations.
    
 ** Setup (Layer 1)
 
-- Clone this repository on your workstation in your home directory (e.g. C:\Users\user):
+- Open a Powershell terminal on the windows 10 machine provided by the learning company.
+
+- Clone this repository in your home directory (e.g. C:\Users\user):
   
      #+BEGIN_SRC shell
      git clone https://github.com/lsiksous/manul.git
@@ -219,7 +258,7 @@ VirtualBox, Hyper-V, VMware, etc.), and any additional configuration scripts.
    - We will setup VS Code to connect to our nodes (filesystem and terminal).
 
      #+begin_src shell
-     vagrant ssh-config >> ~/.ssh/config
+     vagrant ssh-config > ~/.ssh/config
      #+end_src
 
 *** Docker
@@ -231,7 +270,7 @@ learning company).
 
 *** Terraform
 
-You can choose to deploy your cluster to the cloud (Azure).
+You can choose to deploy your cluster to the cloud (e.g. Azure).
 
 **** Initialisation
 
@@ -468,7 +507,7 @@ This is a pretty long process, so we made a dedicated documentation for this ste
 
 * Contribution
 
-- [[https://github.com/Ginius][Splendeurs Obami]] (@Ginius) 
+- [[https://github.com/Ginius][Splendeurs Obami]] (@Ginius) : Beta-testing and labs development.
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
   python. Thanks Khoudia !
 
