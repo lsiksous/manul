@@ -409,7 +409,7 @@ cluster that we have provisioned earlier.
    sudo /tmp/mapr-setup.sh -r https://$HPE_USER:$HPE_TOKEN@package.ezmeral.hpe.com/releases/
    #+end_src
 
-   [[file:madia/mapr/install_00.png]]
+   [[file:media/mapr/install_00.png]]
 
 
 * Usage
