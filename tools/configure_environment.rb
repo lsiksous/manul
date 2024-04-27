@@ -1,5 +1,7 @@
 # configure_environment.rb
 
+VAGRANT_BOX_IMAGE="ubuntu/focal64"
+VAGRANT_PROVISION_PATH="tools/provision.sh"
 NUM_NODES = 3
 NUM_CONTROLLER_NODE = 1
 IP_NTW = "10.0.1."
@@ -7,8 +9,8 @@ CONTROLLER_IP_START = 2
 NODE_IP_START = 3
 
 def configure_environment(config)
-  config.vm.box = "ubuntu/focal64"
-  config.vm.provision "shell", path: "tools/provision.sh"
+  config.vm.box = VAGRANT_BOX_IMAGE
+  config.vm.provision "shell", path: VAGRANT_PROVISION_PATH
   
   (1..NUM_NODES).each do |i|
     config.vm.define "node0#{i}" do |node|
