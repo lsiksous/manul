@@ -7,7 +7,7 @@ CONTROLLER_IP_START = 2
 NODE_IP_START = 3
 
 def configure_environment(config)
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/focal64"
   config.vm.provision "shell", path: "tools/provision.sh"
   
   (1..NUM_NODES).each do |i|
