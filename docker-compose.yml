@@ -1,42 +1,27 @@
 version: '3.3'
 
 services:
-  m1:
+  node01:
     image: lsiksous/zoo-mini:latest
     command: "--master"
     container_name: m1
     networks:
       zoo_network:
         ipv4_address: 172.28.2.1
-  m2:
+  node02:
     image: lsiksous/zoo-mini:latest
     command: "--master"
     container_name: m2
     networks:
       zoo_network:
         ipv4_address: 172.28.2.2
-  s1:
+  node03:
     image: lsiksous/zoo-mini:latest
     command: "--slave --master-ip 172.28.2.1"
     container_name: s1
     networks:
       zoo_network:
         ipv4_address: 172.28.4.1
-  s2:
-    image: lsiksous/zoo-mini:latest
-    command: "--slave --master-ip 172.28.2.1"
-    container_name: s2
-    networks:
-      zoo_network:
-        ipv4_address: 172.28.4.2
-  s3:
-    image: lsiksous/zoo-mini:latest
-    command: "--slave --master-ip 172.28.2.1"
-    container_name: s3
-    networks:
-      zoo_network:
-        ipv4_address: 172.28.4.3
-
   edge:
     image: lsiksous/zoo-mini:latest
     command: "--slave --master-ip 172.28.2.1"
