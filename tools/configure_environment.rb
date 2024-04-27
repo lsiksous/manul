@@ -1,7 +1,7 @@
 # configure_environment.rb
 
 # Use Ubuntu 20.04 LTS (Focal Fossa) as the base box
-VAGRANT_BOX_IMAGE="ubuntu/focal64"
+VAGRANT_BOX_IMAGE="ubuntu/bionic64"
 VAGRANT_PROVISION_PATH="tools/provision.sh"
 NUM_NODES = 3
 NUM_CONTROLLER_NODE = 1
