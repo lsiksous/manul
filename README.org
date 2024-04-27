@@ -151,6 +151,8 @@ When you name a new file, think about the query you would type in the future to 
 ***** Avoid Special Characters
    - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
 
+   *NO SPACES !!!*
+   
 ***** Use File Extensions Appropriately
    - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
 
