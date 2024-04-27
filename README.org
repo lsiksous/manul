@@ -37,14 +37,6 @@ underway to protect its habitat and populations.
 - [[#introduction][Introduction]]
   - [[#project-overview][Project Overview]]
     - [[#file-naming-guidelines][File Naming Guidelines]]
-    - [[#be-descriptive][Be Descriptive]]
-    - [[#use-keywords][Use Keywords]]
-    - [[#be-consistent][Be Consistent]]
-    - [[#keep-it-concise][Keep it Concise]]
-    - [[#use-camelcase-snake_case-or-kebab-case][Use CamelCase, snakecase, or kebab-case]]
-    - [[#include-version-numbers-or-dates-if-applicable][Include Version Numbers or Dates (if applicable)]]
-    - [[#avoid-special-characters][Avoid Special Characters]]
-    - [[#use-file-extensions-appropriately][Use File Extensions Appropriately]]
     - [[#toolbox-features][Toolbox Features]]
     - [[#benefits][Benefits]]
     - [[#future-enhancements][Future Enhancements]]
@@ -88,28 +80,28 @@ underway to protect its habitat and populations.
 
 When you name a new file, think about the query you would type in the future to find it back.
 
-*** Be Descriptive
+**** Be Descriptive
    - Choose names that clearly indicate the content or purpose of the file. Avoid generic or ambiguous names.
 
-*** Use Keywords
+**** Use Keywords
    - Include relevant keywords in the filename that you would likely use when searching for it in the future.
 
-*** Be Consistent
+**** Be Consistent
    - Follow a consistent naming convention across your files and projects to make it easier to navigate and understand.
 
-*** Keep it Concise
+**** Keep it Concise
    - While being descriptive, strive to keep the filename concise and avoid unnecessary verbosity.
 
-*** Use CamelCase, snake_case, or kebab-case
+**** Use CamelCase, snake_case, or kebab-case
    - Choose a naming convention that suits your preference and maintain consistency within your project.
 
-*** Include Version Numbers or Dates (if applicable)
+**** Include Version Numbers or Dates (if applicable)
    - If the file represents a specific version or is related to a particular date, consider including this information in the filename.
 
-*** Avoid Special Characters
+***** Avoid Special Characters
    - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
 
-*** Use File Extensions Appropriately
+***** Use File Extensions Appropriately
    - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
 
    
@@ -163,7 +155,7 @@ When you name a new file, think about the query you would type in the future to 
      setup time and effort for students and instructors alike.
 
      [[file:media/archi.png]]
-
+     
 
 * Installation
 ** Requirements
