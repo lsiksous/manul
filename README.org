@@ -39,13 +39,7 @@ underway to protect its habitat and populations.
     - [[#toolbox-features][Toolbox Features]]
     - [[#benefits][Benefits]]
     - [[#future-enhancements][Future Enhancements]]
-  - [[#file-naming-guidelines][File Naming Guidelines]]
-    - [[#be-descriptive][Be Descriptive]]
-    - [[#use-keywords][Use Keywords]]
-    - [[#be-consistent][Be Consistent]]
-    - [[#keep-it-concise][Keep it Concise]]
-    - [[#use-camelcase-snake_case-or-kebab-case][Use CamelCase, snakecase, or kebab-case]]
-    - [[#include-version-numbers-or-dates-if-applicable][Include Version Numbers or Dates (if applicable)]]
+    - [[#file-naming-guidelines][File Naming Guidelines]]
 - [[#installation][Installation]]
   - [[#requirements][Requirements]]
     - [[#development-environment][Development Environment]]
@@ -124,8 +118,7 @@ underway to protect its habitat and populations.
      development projects. Learning these skills will prepare students for
      collaborative work environments and enhance their employability in the
      industry.
-
-
+     
 *** Future Enhancements
    - *Enhanced Automation:* Continuously improving our automation capabilities, we
      aim to streamline the deployment and management processes further, reducing
@@ -133,7 +126,7 @@ underway to protect its habitat and populations.
 
      [[file:media/archi.png]]
      
-** File Naming Guidelines
+*** File Naming Guidelines
 
 When you name a new file, think about the query you would type in the future to find it back.
 
