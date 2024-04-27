@@ -73,7 +73,7 @@ underway to protect its habitat and populations.
    students to explore different deployment and configuration management
    techniques.
 
-   [[file:media/archi.png]]
+   [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's stages of development]]
 
    
 ** Toolbox Features
@@ -124,6 +124,9 @@ underway to protect its habitat and populations.
    - *Enhanced Automation:* Continuously improving our automation capabilities, we
      aim to streamline the deployment and management processes further, reducing
      setup time and effort for students and instructors alike.
+
+     [[file:media/archi.png]]
+
 
 * Installation
 ** Requirements
