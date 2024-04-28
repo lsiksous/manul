@@ -14,6 +14,9 @@ export MAPR_GROUP=mapr
 export MAPR_GID=5000
 export MAPR_UID=5000
 
+# Oozie URL
+export OOZIE_URL='https://node03.manul.arpa:11443/oozie'
+
 # Hive user
 export HIVE_USER=hive
 export HIVE_PASSWD=hive
