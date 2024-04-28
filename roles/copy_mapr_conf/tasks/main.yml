@@ -2,15 +2,18 @@
 - name: Fetch ssl_truststore from source node
   fetch:
     src: "/opt/mapr/conf/ssl_truststore"
-    dest: "/opt/mapr/conf/"
+    dest: "/tmp/"
     flat: yes
   delegate_to: "{{ source_node }}"
   become: true
+  become_user: root
 
 - name: Fetch ssl-client.xml from source node
   fetch:
     src: "/opt/mapr/conf/ssl-client.xml"
-    dest: "/opt/mapr/conf/"
+    dest: "/tmp/"
     flat: yes
   delegate_to: "{{ source_node }}"
   become: true
+  become_user: root
+

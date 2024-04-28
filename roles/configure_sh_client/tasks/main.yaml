@@ -3,9 +3,10 @@
   shell: >
     /opt/mapr/server/configure.sh
     -N {{ cluster_name }}
-    -C "{{ groups['nodes'] | map('regex_replace', '^(.*)$', '\1.' + cluster_name) | join(',') }}"
-    -Z "{{ groups['nodes'] | map('regex_replace', '^(.*)$', '\1.' + cluster_name) | join(',') }}"
     -c
+    -secure
+    -C "{{ groups['nodes'] | map('regex_replace', '^(.*)$', '\1.' + cluster_name) | join(',') }}"
+    -HS node03.manul.arpa
   register: command_output
 
 - name: Debug command output
