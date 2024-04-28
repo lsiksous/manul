@@ -1,6 +1,11 @@
 ---
-- name: Copy hive-site.xml to the cluster
+# - name: Copy hive-site.xml to the cluster
+#   hosts: node03
+#   become: true
+#   roles:
+#     - copy_hive_site
+
+- name: Deploy Oozie Ext libraries to MapR Clusters
   hosts: node03
-  become: true
   roles:
-    - copy_hive_site
+    - oozie-ext-lib
