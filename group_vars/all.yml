@@ -8,8 +8,6 @@ mapr_uid: "{{ lookup('env', 'MAPR_UID') }}"
 mapr_gid:  "{{ lookup('env', 'MAPR_GID') }}"
 mapr_password:  "{{ lookup('env', 'MAPR_PASSWD') }}"
 
-
----
 # Default swapfile size in MB
 swapfile_size: "4G"
 
