@@ -48,16 +48,18 @@ underway to protect its habitat and populations.
     - [[#virtual-machine-requirements][Virtual Machine Requirements]]
     - [[#licensing][Licensing]]
     - [[#important-note][Important Note]]
-  - [[#setup-layer-1][Setup (Layer 1)]]
+  - [[#setup][Setup]]
     - [[#vagrant][Vagrant]]
     - [[#docker][Docker]]
     - [[#terraform][Terraform]]
-  - [[#automated-installation-using-the-mapr-installer-layer-2][Automated Installation Using the MapR Installer (Layer 2)]]
+  - [[#automated-installation-using-the-mapr-installer][Automated Installation Using the MapR Installer]]
 - [[#usage][Usage]]
+  - [[#connect-to-the-cluster][Connect to the cluster]]
+    - [[#login-to-the-cluster][Login to the cluster]]
   - [[#interacting-with-the-cluster][Interacting with the cluster]]
   - [[#monitoring-the-cluster][Monitoring the cluster]]
 - [[#configuration][Configuration]]
-  - [[#running-the-mapr-installer-layer-3][Running the MapR Installer (Layer 3)]]
+  - [[#running-the-mapr-installer][Running the MapR Installer]]
   - [[#mapr-post-install][MapR Post Install]]
     - [[#cluster][Cluster]]
     - [[#edgecontroller][Edge/controller]]
@@ -202,7 +204,7 @@ When you name a new file, think about the query you would type in the future to 
 
      Restart your machine.
    
-** Setup (Layer 1)
+** Setup
 
 - Open a Powershell terminal on the windows 10 machine provided by the learning company.
 
@@ -304,7 +306,7 @@ terraform plan -destroy -out main.destroy.tfplan
 terraform apply main.destroy.tfplan
 #+end_src
 
-** Automated Installation Using the MapR Installer (Layer 2)
+** Automated Installation Using the MapR Installer
 
 MapR provides an installer that simplifies the process of setting up a cluster
 by automating many of the steps. This method is recommended for users who want a
@@ -451,6 +453,35 @@ cluster that we have provisioned earlier.
 
 * Usage
 
+** Connect to the cluster
+
+*** Login to the cluster
+
+ In a MapR cluster environment, the maprlogin command is used to authenticate
+ users to the cluster. This command generates a ticket file that grants access
+ to MapR services and resources for a specified period of time. Here's how it
+ works:
+
+*Authentication:* When a user runs maprlogin, they provide their MapR cluster
+username and password. The maprlogin command then authenticates the user against
+the MapR cluster.
+
+*Ticket File Generation:* Upon successful authentication, maprlogin generates a
+ticket file. This ticket file contains authentication credentials and
+permissions granted to the user. By default, the ticket file is created in the
+user's home directory.
+
+*Using the Ticket:* The ticket file is used to authenticate subsequent MapR
+commands and operations. When a user runs a MapR command, they can specify the
+location of the ticket file using the MAPR_TICKETFILE_LOCATION environment
+variable. This tells the MapR client tools where to find the authentication
+credentials.
+
+*Executing MapR Commands:* Once authenticated, the user can execute MapR commands
+as usual. The commands will use the ticket file to authenticate to the MapR
+cluster and perform the requested operations.
+
+
 ** Interacting with the cluster
 
 Hue serves as a comprehensive web-based interface for interacting with our
@@ -474,7 +505,7 @@ status, and system behavior.
 
 * Configuration
 
-** Running the MapR Installer (Layer 3)
+** Running the MapR Installer
 
 - *Cluster Configuration:* We'll configure the MapR cluster according to our
   requirements. This includes specifying the nodes that will participate in the
