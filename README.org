@@ -74,7 +74,7 @@ underway to protect its habitat and populations.
    students to explore different deployment and configuration management
    techniques.
 
-   [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's cognitive stages of development]]
+   [[https://www.youtube.com/watch?v=v4oYOjVDgo0][Jean Piaget's Mountains Task in action!]]
    
 *** Toolbox Features
    - *Hadoop Distributions:* Our toolbox supports the deployment of three main
@@ -151,7 +151,7 @@ When you name a new file, think about the query you would type in the future to 
 ***** Avoid Special Characters
    - Stick to alphanumeric characters and underscores to ensure compatibility across different platforms.
 
-   *NO SPACES !!!*
+   *NO SPACES WINDOWS HEADS !!!*
    
 ***** Use File Extensions Appropriately
    - Choose the appropriate file extension based on the file type (e.g., .py for Python scripts, .txt for text files, etc.).
@@ -501,7 +501,8 @@ This is a pretty long process, so we made a dedicated documentation for this ste
 
 - [[https://github.com/Ginius][Splendeurs Obami]] (@Ginius) : Beta-testing and labs development.
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
-  python. Thanks Khoudia !
+  python.
+- All the learners in the world: This is 4 U !
 
 * License
 

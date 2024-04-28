@@ -1,0 +1,6 @@
+# defaults/main.yml
+oozie_libext_url: "http://archive.cloudera.com/gplextras/misc/ext-2.2.zip"
+oozie_libext_destination: "/opt/mapr/oozie/oozie-5.2.0/libext"
+oozie_libext_file_name: "ext-2.2.zip"
+oozie_user: "mapr"
+oozie_group: "mapr"

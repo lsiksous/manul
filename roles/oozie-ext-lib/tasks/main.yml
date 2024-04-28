@@ -1,0 +1,28 @@
+---
+- name: Download the Oozie libext file
+  get_url:
+    url: "{{ oozie_libext_url }}"
+    dest: "/tmp/{{ oozie_libext_file_name }}"
+    mode: '0644'
+
+- name: Ensure the Oozie libext directory exists
+  file:
+    path: "{{ oozie_libext_destination }}"
+    state: directory
+    owner: "{{ oozie_user }}"
+    group: "{{ oozie_group }}"
+    mode: '0755'
+
+- name: Copy the Oozie libext ZIP to the target directory
+  copy:
+    src: "/tmp/{{ oozie_libext_file_name }}"
+    dest: "{{ oozie_libext_destination }}/{{ oozie_libext_file_name }}"
+    remote_src: yes
+    owner: "{{ oozie_user }}"
+    group: "{{ oozie_group }}"
+    mode: '0644'
+
+- name: Clean up downloaded file
+  file:
+    path: "/tmp/{{ oozie_libext_file_name }}"
+    state: absent
