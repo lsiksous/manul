@@ -58,6 +58,9 @@ underway to protect its habitat and populations.
   - [[#monitoring-the-cluster][Monitoring the cluster]]
 - [[#configuration][Configuration]]
   - [[#running-the-mapr-installer-layer-3][Running the MapR Installer (Layer 3)]]
+  - [[#mapr-post-install][MapR Post Install]]
+    - [[#cluster][Cluster]]
+    - [[#edgecontroller][Edge/controller]]
 - [[#contribution][Contribution]]
 - [[#license][License]]
 - [[#acknowledgments][Acknowledgments]]
@@ -493,9 +496,27 @@ status, and system behavior.
 This is a pretty long process, so we made a dedicated documentation for this step
 (See [[file:doc/mapr_configuration.org]]
 
-
-
 [[file:media/mapr/install_01.png]]
+
+** MapR Post Install
+
+*** Cluster
+
+- Run the playbook:
+
+  #+begin_src shell
+  ansible-playbook -i inventory.ini 99-mapr_post_install-cluster.yml
+  #+end_src
+
+*** Edge/controller
+
+- Run the playbook:
+
+  #+begin_src shell
+  ansible-playbook -i inventory.ini 50-mapr_post_install-edge.yml
+  #+end_src
+  
+
 
 * Contribution
 

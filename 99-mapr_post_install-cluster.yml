@@ -1,11 +1,12 @@
 ---
-# - name: Copy hive-site.xml to the cluster
+# - name: Copy hive-site.xml to the cluster if you use a mysql database for
+# hivemeta, hue and Oozie
 #   hosts: node03
 #   become: true
 #   roles:
 #     - copy_hive_site
 
-- name: Deploy Oozie Ext libraries to MapR Clusters
+- name: Deploy Oozie Ext libraries to MapR Cluster
   become: yes
   hosts: node03
   roles:
