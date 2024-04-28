@@ -17,13 +17,12 @@
   
 - name: Create MapR NFS directory
   become: yes
-  become_user: root
-  become_method: sudo
   file:
     path: "{{ mapr_nfs_directory }}"
     state: directory
+    owner: "{{ mapr_user }}"
+    group: "{{ mapr_group }}"
     mode: '0755'
-    state: present
 
 - name: Mount NFS share from "{{ mapr_nfs_host }}"
   become: yes
