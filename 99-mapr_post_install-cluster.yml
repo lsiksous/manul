@@ -6,6 +6,7 @@
 #     - copy_hive_site
 
 - name: Deploy Oozie Ext libraries to MapR Clusters
+  become: yes
   hosts: node03
   roles:
     - oozie-ext-lib
