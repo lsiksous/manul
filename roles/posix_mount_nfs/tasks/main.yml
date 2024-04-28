@@ -23,6 +23,7 @@
     path: "{{ mapr_nfs_directory }}"
     state: directory
     mode: '0755'
+    state: present
 
 - name: Mount NFS share from "{{ mapr_nfs_host }}"
   become: yes
