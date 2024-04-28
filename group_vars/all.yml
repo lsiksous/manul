@@ -7,3 +7,11 @@ mapr_group:  "{{ lookup('env', 'MAPR_GROUP') }}"
 mapr_uid: "{{ lookup('env', 'MAPR_UID') }}"
 mapr_gid:  "{{ lookup('env', 'MAPR_GID') }}"
 mapr_password:  "{{ lookup('env', 'MAPR_PASSWD') }}"
+
+
+---
+# Default swapfile size in MB
+swapfile_size: "4G"
+
+# Default path for swapfile
+swapfile_path: "/swapfile"
