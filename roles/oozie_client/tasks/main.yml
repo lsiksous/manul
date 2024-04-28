@@ -1,0 +1,10 @@
+---
+- name: Run Oozie configure script
+  shell: "{{ oozie_configure_cmd }}"
+
+- name: Set Oozie URL environment variable
+  set_fact:
+    OOZIE_URL: "{{ oozie_url }}"
+
+- name: Check Oozie status
+  shell: "{{ oozie_bin_dir }}/oozie admin -status"

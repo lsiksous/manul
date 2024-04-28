@@ -13,6 +13,13 @@ mapr_repos:
   - repo: "deb [arch=amd64] https://package.ezmeral.hpe.com/releases/v{{ mapr_release }}/ubuntu/ binary trusty"
   - repo: "deb [arch=amd64] https://package.ezmeral.hpe.com/releases/MEP/MEP-{{ mapr_mep_release }}/ubuntu/ binary trusty"
 
+# Oozie configure
+oozie_version: "5.2.0"
+oozie_bin_dir: "/opt/mapr/oozie/oozie-{{ oozie_version }}/bin"
+oozie_configure_cmd: "{{ oozie_bin_dir }}/configure.sh -R -c --secure"
+oozie_url: "https://{{ oozie_node }}:11443/oozie"
+oozie_node: "node03.manul.arpa"
+    
 # MapR nfs mount point
 mapr_nfs_directory: "/mapr_nfs"
 mapr_nfs_host: "node01"

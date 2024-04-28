@@ -12,4 +12,5 @@
     - nfs_packages
     - java_env
     - configure_sh_client
+    - oozie_client
     - posix_mount_nfs
