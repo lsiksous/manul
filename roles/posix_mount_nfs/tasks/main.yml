@@ -6,14 +6,6 @@
   file:
     path: /opt/mapr/bin/fusermount
     mode: u+s
-
-- name: Check status of mapr-posix-client-basic service
-  command: systemctl status mapr-posix-client-basic.service
-  register: service_status
-
-- name: Print registered output
-  debug:
-    var: service_status
     
 - name: Show NFS exports from  "{{ mapr_nfs_host }}"
   command: showmount -e  "{{ mapr_nfs_host }}"
@@ -43,6 +35,13 @@
     state: mounted
 
 
+# - name: Check status of mapr-posix-client-basic service
+#   command: systemctl status mapr-posix-client-basic.service
+#   register: service_status
+
+# - name: Print registered output
+#   debug:
+#     var: service_status
 # - name: Start mapr-posix-client-basic service
 #   become: yes
 #   become_user: root
