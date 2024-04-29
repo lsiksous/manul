@@ -266,7 +266,7 @@ learning company).
 We prepared a specific docker image for this project. You can find it on Docker
 Hub.
 
-[[../../media/zoo-mini.png]]
+[[file:media/zoo-mini.png]]
 
 
 #+begin_src shell
