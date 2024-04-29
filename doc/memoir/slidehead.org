@@ -10,7 +10,7 @@
 # beamer entry so this needs to be defined in your configuration (see
 # the tutorial).
 #+LaTeX_CLASS: beamer
-#+LaTeX_CLASS_OPTIONS: [bigger] 
+#+LaTeX_CLASS_OPTIONS: [tiny] 
 
 #+LATEX_HEADER: \usepackage{listings}
 
@@ -18,7 +18,7 @@
 #+LATEX_HEADER: \usecolortheme[named=UBCblue]{structure}
 
 # Beamer supports alternate themes.  Choose your favourite here
-#+BEAMER_COLOR_THEME: dolphin
+#+BEAMER_COLOR_THEME: beaver
 #+BEAMER_FONT_THEME:  default
 #+BEAMER_INNER_THEME: [shadow]rounded
 #+BEAMER_OUTER_THEME: infolines
@@ -37,9 +37,9 @@
 #+COLUMNS: %20ITEM %13BEAMER_env(Env) %6BEAMER_envargs(Args) %4BEAMER_col(Col) %7BEAMER_extra(Extra)
 
 # #+BEAMER_HEADER: \usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight,opacity=.01]{img/bg2.jpeg}}
-# #+BEAMER_HEADER: \logo{\includegraphics[height=.5cm,keepaspectratio]{img/bti_logo2.png}\vspace{240pt}}
+#+BEAMER_HEADER: \logo{\includegraphics[height=0.9cm,keepaspectratio]{../../media/jems.png}\vspace{1040pt}}
 # #+BEAMER_HEADER: \setbeamertemplate{background canvas}{\begin{tikzpicture}\node[opacity=.1]{\includegraphics [width=\paperwidth,height=\paperheight]{img/background.jpg}};\end{tikzpicture}}
 # #+BEAMER_HEADER: \logo{\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{img/background.jpg}}
-#+BEAMER_HEADER: \titlegraphic{\includegraphics[width=50]{./fig/ifip.jpg}}
+#+BEAMER_HEADER: \titlegraphic{\includegraphics[width=50]{../../media/logo.png}}
 # #+BEAMER_HEADER: \definecolor{ft}{RGB}{255, 241, 229}
 # #+BEAMER_HEADER: \setbeamercolor{background canvas}{bg=ft}

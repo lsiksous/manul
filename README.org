@@ -54,15 +54,14 @@ underway to protect its habitat and populations.
     - [[#terraform][Terraform]]
   - [[#automated-installation-using-the-mapr-installer][Automated Installation Using the MapR Installer]]
 - [[#usage][Usage]]
-  - [[#connect-to-the-cluster][Connect to the cluster]]
-    - [[#login-to-the-cluster][Login to the cluster]]
+  - [[#login-to-the-cluster][Login to the cluster]]
   - [[#interacting-with-the-cluster][Interacting with the cluster]]
   - [[#monitoring-the-cluster][Monitoring the cluster]]
 - [[#configuration][Configuration]]
   - [[#running-the-mapr-installer][Running the MapR Installer]]
   - [[#mapr-post-install][MapR Post Install]]
-    - [[#cluster][Cluster]]
     - [[#edgecontroller][Edge/controller]]
+    - [[#cluster][Cluster]]
 - [[#contribution][Contribution]]
 - [[#license][License]]
 - [[#acknowledgments][Acknowledgments]]
@@ -264,6 +263,16 @@ You can choose to deploy your cluster locally on a unix-like system (including a
 pre-provisionned ubuntu virtual box running on the windows host provided by the
 learning company).
 
+We prepared a specific docker image for this project. You can find it on Docker
+Hub.
+
+[[../../media/zoo-mini.png]]
+
+
+#+begin_src shell
+docker-compose up
+#+end_src
+
 
 *** Terraform
 
@@ -453,9 +462,7 @@ cluster that we have provisioned earlier.
 
 * Usage
 
-** Connect to the cluster
-
-*** Login to the cluster
+** Login to the cluster
 
  In a MapR cluster environment, the maprlogin command is used to authenticate
  users to the cluster. This command generates a ticket file that grants access
@@ -469,17 +476,19 @@ the MapR cluster.
 *Ticket File Generation:* Upon successful authentication, maprlogin generates a
 ticket file. This ticket file contains authentication credentials and
 permissions granted to the user. By default, the ticket file is created in the
-user's home directory.
+/tmp directory.
 
 *Using the Ticket:* The ticket file is used to authenticate subsequent MapR
-commands and operations. When a user runs a MapR command, they can specify the
-location of the ticket file using the MAPR_TICKETFILE_LOCATION environment
-variable. This tells the MapR client tools where to find the authentication
-credentials.
+commands and operations.
 
 *Executing MapR Commands:* Once authenticated, the user can execute MapR commands
 as usual. The commands will use the ticket file to authenticate to the MapR
 cluster and perform the requested operations.
+
+#+begin_src shell
+su mapr
+maprlogin password
+#+end_src
 
 
 ** Interacting with the cluster
@@ -531,6 +540,14 @@ This is a pretty long process, so we made a dedicated documentation for this ste
 
 ** MapR Post Install
 
+*** Edge/controller
+
+- Run the playbook:
+
+  #+begin_src shell
+  ansible-playbook -i inventory.ini 50-mapr_post_install-edge.yml
+  #+end_src
+
 *** Cluster
 
 - Run the playbook:
@@ -539,22 +556,11 @@ This is a pretty long process, so we made a dedicated documentation for this ste
   ansible-playbook -i inventory.ini 99-mapr_post_install-cluster.yml
   #+end_src
 
-*** Edge/controller
-
-- Run the playbook:
-
-  #+begin_src shell
-  ansible-playbook -i inventory.ini 50-mapr_post_install-edge.yml
-  #+end_src
-  
-
-
 * Contribution
 
 - [[https://github.com/Ginius][Splendeurs Obami]] (@Ginius) : Beta-testing and labs development.
 - [[https://github.com/fall5443][Khoudia Fall]] (@fall5443) : A fellow student who wrote the map/reduce algo in
   python.
-- All the learners in the world: This is 4 U !
 
 * License
 
