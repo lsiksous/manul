@@ -37,6 +37,8 @@ def configure_environment(config)
       node.vm.network "forwarded_port", guest: 5601, host: 5601, auto_correct: true
       # MCS
       node.vm.network "forwarded_port", guest: 8443, host: 8443, auto_correct: true
+      # Yarn
+      node.vm.network "forwarded_port", guest: 8090, host: 8090, auto_correct: true
     end
   end
 
