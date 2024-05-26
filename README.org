@@ -197,11 +197,12 @@ When you name a new file, think about the query you would type in the future to 
      compatibility issues with virtualbox and Windows 10.
    - For this reason, it is recommended to disable Hyper-V:
 
-     #+begin_src shell
-     bcdedit /set hypervisorlaunchtype off
-     #+end_src
+#+begin_src shell
+bcdedit /set hypervisorlaunchtype off
+#+end_src
 
-     Restart your machine.
+
+- Restart your machine.
    
 ** Setup
 
@@ -209,9 +210,9 @@ When you name a new file, think about the query you would type in the future to 
 
 - Clone this repository in your home directory (e.g. C:\Users\user):
   
-     #+BEGIN_SRC shell
-     git clone https://github.com/lsiksous/manul.git
-     cd manul
+#+BEGIN_SRC shell
+git clone https://github.com/lsiksous/manul.git
+cd manul
      #+END_SRC
 
 *** Vagrant
@@ -233,13 +234,13 @@ VirtualBox, Hyper-V, VMware, etc.), and any additional configuration scripts.
    defaut values reflect what you see in the upper schema:
 
    
-   #+begin_example
-   NUM_NODES = 3
-   NUM_CONTROLLER_NODE = 1
-   IP_NTW = "10.0.1."
-   CONTROLLER_IP_START = 2
-   NODE_IP_START = 3
-   #+end_example
+#+begin_example
+NUM_NODES = 3
+NUM_CONTROLLER_NODE = 1
+IP_NTW = "10.0.1."
+CONTROLLER_IP_START = 2
+NODE_IP_START = 3
+#+end_example
 
 2. Open a window terminal and run vagrant up:
 
@@ -253,9 +254,9 @@ VirtualBox, Hyper-V, VMware, etc.), and any additional configuration scripts.
      valid configuration to connect to the machine via SSH.
    - We will setup VS Code to connect to our nodes (filesystem and terminal).
 
-     #+begin_src shell
-     vagrant ssh-config > ~/.ssh/config
-     #+end_src
+#+begin_src shell
+vagrant ssh-config > ~/.ssh/config
+#+end_src
 
 *** Docker
 
@@ -286,13 +287,13 @@ cd terraform && terraform init && terraform plan -out main.tfplan
 
 **** Run terraform apply to apply the execution plan
 
-  #+begin_src shell
-  terraform apply main.tfplan
-  #+end_src
+#+begin_src shell
+terraform apply main.tfplan
+#+end_src
 
 **** Verify the results
 
-  #+begin_src shell
+#+begin_src shell
 # Get the Azure resource group name
 resource_group_name=$(terraform output -raw resource_group_name)
 
@@ -303,7 +304,7 @@ virtual_network_name=$(terraform output -raw virtual_network_name)
 az network vnet show \
     --resource-group $resource_group_name \
     --name $virtual_network_name
-  #+end_src
+#+end_src
 
 **** Clean up resources
 
@@ -342,10 +343,10 @@ cluster that we have provisioned earlier.
    #+end_src
 2. cd into manul directory and pull last version:
 
-   #+begin_src shell
-   cd manul
-   git pull
-   #+end_src
+#+begin_src shell
+cd manul
+git pull
+#+end_src
 
 3. Customize environment variables:
 

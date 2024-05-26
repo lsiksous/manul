@@ -1,5 +1,6 @@
 # Secrets in manul_env.sh
 manul_env.sh
+.Dockerhub_Token
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -23,6 +24,7 @@ Thumbs.db
 .idea/
 *.swp
 *~
+\#*
 
 # Temporary files
 *.tmp
